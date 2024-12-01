@@ -7,8 +7,6 @@ data_graph.parse("./ontology/Instances and Shapes Nov 10.ttl", format="turtle")
 # data_graph.parse(r"C:/Users/andre/ontology/SHACL_chatGPT/Instances and Shapes Nov 10.ttl", format="turtle")
 # data_graph.parse("./Instances and Shapes Nov 10.ttl", format="turtle")
 
-
-
 # Create a separate graph for SHACL shapes
 shapes_graph = Graph()
 shapes_graph.parse("./ontology/Instances and Shapes Nov 10.ttl", format="turtle")
