@@ -1,0 +1,210 @@
+@prefix ex: <https://purl.org/5g-hybrid-threats#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+# Shapes file added to Instances on November 10
+
+# 1. Instances segment
+
+ex:COVID19_Vaccine_Research a ex:APT29Activity ;
+    ex:targets 
+    ex:PharmaceuticalCompanies ; ex:location "Worldwide" ;
+    ex:APTName "COVID-19 Vaccine Research Attack" ;
+    rdfs:label "COVID-19 Vaccine Research Targeting - 2020" ;
+    ex:objective "Intellectual Property Theft" ;
+    ex:techniquesUsed "Data Exfiltration"; 
+    ex:year "2020"^^xsd:gYear ;
+#   ex:targets ex:HealthcareOrganizations, ex:location "Worldwide" .
+        rdfs:comment "Campaign targeting healthcare and pharmaceutical organizations for vaccine research data." .
+
+ex:DNC_2016_Election a ex:APT29Activity ;
+    ex:targets 
+    ex:DemocraticNationalCommittee ; ex:location "Washington, D.C." ;
+    ex:APTName "2016 DNC Election Interference" ;
+    rdfs:label "DNC Cyber Operation - 2016 Election" ;
+    ex:associatedMalware ex:MiniDuke,
+        ex:SeaDuke ;
+    ex:objective "Election Interference" ;
+       ex:techniquesUsed "Malware Deployment",
+        "Spear Phishing" ;
+    ex:year "2016"^^xsd:gYear ;
+    rdfs:comment "Cyber operation targeting the DNC and U.S. political organizations during the 2016 U.S. presidential election." .
+
+ex:SolarWinds_Attack a ex:APT29Activity ;
+    ex:targets 
+    ex:SolarWindsOrionPlatform ; ex:location "Texas" ;
+    ex:APTName "SolarWinds Attack" ;
+    rdfs:label "SolarWinds Supply Chain Attack" ;
+    ex:associatedAPTGroup ex:APT28 ;
+    ex:impact "Global Network Compromise" ;
+    ex:techniquesUsed "Exploitation of Supply Chain Vulnerability" ;
+    ex:year "2020"^^xsd:gYear ;
+    rdfs:comment "Possible involvement in the SolarWinds attack, affecting multiple organizations through a compromised software update." .
+
+ex:Malware a owl:Class ;
+    rdfs:label "Malware" ;
+    rdfs:comment "Encompasses various malicious software designed to harm or exploit systems." ;
+    rdfs:subClassOf ex:NefariousActivity .
+
+# Define WannaCry as an instance of Malware
+ex:WannaCry a ex:Malware ;
+    ex:NefariousActivityName "WannaCry - a sub-Attack of Malware" ;
+    ex:MalwareName "Malware Attack" ;
+    rdfs:label "WannaCry Attack" ;
+    rdfs:comment "A famous ransomware attack that encrypts files." .
+
+ex:APT a owl:Class ;
+    rdfs:label "APT" ;
+    rdfs:comment "A type of Advanced Persistent Threat that persists in the network ." ;
+    rdfs:subClassOf ex:Threat .
+
+# Define APT33 as a subclass of APT
+ex:APT33 a owl:Class ;
+    rdfs:label "APT33" ;
+    rdfs:comment "An advanced persistent threat group associated with the WannaCry ransomware attack." ;
+    rdfs:subClassOf ex:APT .
+
+ex:APT29 a owl:Class ; 
+    rdfs:label "APT29" ;
+    rdfs:comment "A specific instance of an Advanced Persistent Threat (APT),  also known as Cozy Bear or The Dukes, affiliated with Russian intelligence (SVR)." ;
+    rdfs:subClassOf ex:APT .
+
+ex:APT29Activity a owl:Class ; 
+    rdfs:label "APT29Activity" ;
+    rdfs:comment "Specific cyber activities associated with the APT29 threat group." ;
+    rdfs:subClassOf ex:APT29 .
+
+ex:NefariousActivity a owl:Class ;
+    rdfs:label "NefariousActivity" ;
+    rdfs:comment "A type of Threat that encrypts data and demands a ransom for its release." ;
+    rdfs:subClassOf ex:Threat .
+
+ex:Threat a owl:Class ;
+    rdfs:label "Threat" ;
+    rdfs:comment "An event or actor posing potential danger to assets." .
+
+#  ADD NEW STUFF Here
+
+# Added 2024 November 9 start
+
+ex:Asset a owl:Class ;
+    rdfs:label "Asset" ;
+    rdfs:comment "Anything that has value and can be the target of a threat." .
+
+ex:AttackVector a owl:Class ;
+    rdfs:label "Cyber Attack" ;
+    rdfs:comment "Represents a generic cyber attack." .
+
+ex:Attack1 a ex:AttackVector ;
+    ex:targets ex:MyNetwork , ex:MySoftware .
+
+ex:NetworkAsset rdfs:subClassOf ex:Asset ;
+    rdfs:label "Network Asset" ;
+    rdfs:comment "Any component or system that is part of a network infrastructure." .
+
+ex:MyNetwork a ex:NetworkAsset ;
+    ex:location "Berlin" .
+
+ex:SoftwareAsset rdfs:subClassOf ex:Asset ;
+    rdfs:label "Software Asset" ;
+    rdfs:comment "Any software application, operating system, or firmware." .
+
+ex:MySoftware a ex:SoftwareAsset ;
+    ex:location "Cloud" .
+    
+ex:HumanAsset rdfs:subClassOf ex:Asset ;
+    rdfs:label "Human Asset" ;
+    rdfs:comment "Individuals or groups with access to critical systems or data." .
+
+ex:DataAsset rdfs:subClassOf ex:Asset ;
+    rdfs:label "Data Asset" ;
+    rdfs:comment "Information that has value or confidentiality." .
+
+ex:targets rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:Threat ;  # Or a specific attack instance class
+    rdfs:range ex:Asset ;
+    rdfs:label "targets" ;
+    rdfs:comment "Specifies the target of the attack." .
+
+# Added 2024 November 9 finish
+
+# Define usedByAPT relationship
+ex:usedByAPT33 rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:Malware ;
+    rdfs:range ex:APT ;
+    rdfs:label "used by APT33" ;
+    rdfs:comment "Indicates that a particular malware was used by a specific APT group in their operations." .
+
+# Specify that WannaCry is used by APT33
+ex:WannaCry ex:usedByAPT33 ex:APT33 .
+
+# Here, WannaCry was moved to instance of Malware 
+# APT33 defined -- and a relationship established between WannaCry and APT33
+
+# *********************************************
+# Shapes file added to Instances on November 10
+# Shapes segemnt
+
+ex:APT29ActivityShape a sh:NodeShape ;
+    sh:property ex:TargetConstraint,
+        ex:TechniquesUsedConstraint,
+        ex:YearConstraint ;
+    sh:targetClass ex:APT29Activity .
+
+ex:APTShape a sh:NodeShape ;
+    sh:targetClass ex:APT29Activity ;
+    sh:property [
+        sh:path ex:APTName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:description "An APT activity must have at least one name." ;
+    ] .
+ex:MalwareShape a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:minCount 1 ;
+            sh:path ex:MalwareName ] ;
+    sh:targetClass ex:Malware .
+
+ex:NefariousActivityShape a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:minCount 1 ;
+            sh:path ex:NefariousActivityName ] ;
+    sh:targetClass ex:NefariousActivity .
+
+# Added 2024 Novemeber 9 start
+
+ex:APT29ActivityShape a sh:NodeShape ;
+    sh:targetClass ex:APT29Activity ;
+    sh:property [
+        sh:path ex:location ;
+        sh:minCount 1 ;
+        sh:message "Every APT29Activity must have a location."
+     ] .
+
+ex:DataAssetShape a sh:NodeShape ;
+    sh:targetClass ex:DataAsset ;
+    sh:property [
+        sh:path ex:sensitivity ;
+        sh:minCount 1 ;
+        sh:message "Every DataAsset must have a sensitivity level."
+    ] .
+
+# Added 2024 November 9 finish
+
+ ex:TargetConstraint sh:message "Activity should have at least one target." ;
+    sh:minCount 1 ;
+    sh:path ex:targets .
+
+ex:TechniquesUsedConstraint sh:datatype xsd:string ;
+    sh:message "Techniques used should be specified." ;
+    sh:minCount 1 ;
+    sh:path ex:techniquesUsed .
+
+ex:YearConstraint sh:datatype xsd:gYear ;
+    sh:message "Year of activity occurrence should be specified." ;
+    sh:minCount 1 ;
+    sh:path ex:year .
+
