@@ -14,7 +14,7 @@ The primary objectives of this project are:
 
 ## Current Status
 
-The ontology is in its prototype stage, featuring:
+The ontology is in its preliminary stage, featuring:
 - Key concepts and relationships specific to hybrid threats in 5G infrastructure.
 - Initial validation using **SHACL** and reasoning tools such as **Protégé**.
 - Future plans to integrate concepts from standard KOS (e.g., STIX) and add case studies.
@@ -28,7 +28,7 @@ The ontology is in its prototype stage, featuring:
 ## Next Steps
 
 1. Align the ontology with standard cybersecurity vocabularies (e.g., STIX, ENISA Taxonomies).
-2. Expand the ontology to include 5G-specific assets and threats.
+2. Expand the ontology to include additional 5G-specific assets and threats.
 3. Publish updates and invite contributions from the research community.
 
 ## License
@@ -37,9 +37,8 @@ This work is released under the **Creative Commons Zero (CC0)** license to maxim
 
 ## Acknowledgments
 
-This project is supported by the **H2020 EU-HYBNET** initiative and aligns with the guidelines set by the **Open Research Europe (ORE)** platform.
+This project is supported by the **H2020 EU-HYBNET** initiative under grant agreement No [883054] (Empowering a Pan-European Network to Counter Hybrid Threats).
 
----
 
 ### Feedback and Contributions
 
