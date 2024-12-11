@@ -21,3 +21,8 @@ To run the script, you need:
    ```cmd
    pip install rdflib pyshacl
 
+## License
+This script is released under the MIT License (  https://opensource.org/licenses/MIT ) to maximize reusability and collaboration. This means:
+–	You can use, copy, modify, and distribute this script freely.
+–	Attribution is required, meaning you must include the original license notice and copyright statement in any copy or substantial use of the script.
+–	There is no warranty for this script; it is provided "as is."
