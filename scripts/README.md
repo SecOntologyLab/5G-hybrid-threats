@@ -28,43 +28,43 @@ This script is released under the MIT License (  https://opensource.org/licenses
 –	There is no warranty for this script; it is provided "as is."
 
 ***
-### Detailed Instructions for SHACL Validation
+## Detailed Instructions for SHACL Validation
 Overview
 The validate_shacl.py script validates the ontology (ontology.ttl) against SHACL constraints (shapes.ttl). This ensures compliance with semantic rules and constraints. The script works seamlessly in Windows environments, whether you use Command Prompt, PowerShell, or an IDE like VS Code.
 ________________________________________
-## Steps to Validate the Ontology
+### Steps to Validate the Ontology
 
 1.	Clone the Repository Clone the repository to your local machine:
 o	Command Prompt or PowerShell:
 
-cmd
-Copy code
-git clone https://github.com/SecOntologyLab/5G-hybrid-threats.git
-cd 5G-hybrid-threats
+                            cmd
+                            Copy code
+                            git clone https://github.com/SecOntologyLab/5G-hybrid-threats.git
+                            cd 5G-hybrid-threats
 
 2.	Install Python Dependencies Ensure Python is installed (version 3.8 or higher) and install the required libraries:
 o	Command Prompt or PowerShell:
 
-cmd
-Copy code
-pip install rdflib
+                            cmd
+                            Copy code
+                            pip install rdflib
 
 3.	Run the Validation Script You can run the validation script from either the ‘scripts’ directory or the ontology directory.
 o	From the scripts Directory:
 	Command Prompt or PowerShell:
 
-cmd
-Copy code
-cd scripts
-python validate_shacl.py
+                            cmd
+                            Copy code
+                            cd scripts
+                            python validate_shacl.py
 
 o	From the ontology Directory:
 	Command Prompt or PowerShell:
 
-cmd
-Copy code
-cd ontology
-python validate_shacl.py
+                            cmd
+                            Copy code
+                            cd ontology
+                            python validate_shacl.py
 
 4.	Using Visual Tools You can also execute the script in IDEs like VS Code:
 o	Open the repository in VS Code.
