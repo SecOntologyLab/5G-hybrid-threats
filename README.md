@@ -33,7 +33,7 @@ The ontology is in its preliminary stage, featuring:
 
 ## License
 
-This work is released under the **Creative Commons Zero (CC0)** license to maximize reusability and collaboration.
+The work is released under either the **Creative Commons Zero (CC0)** license to maximize reusability and collaboration; or the MIT license if attribution is a priority.
 
 ## Acknowledgments
 
