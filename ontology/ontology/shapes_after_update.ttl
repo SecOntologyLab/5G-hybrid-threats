@@ -1,0 +1,1366 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/5g-security#AssetShape> a sh:NodeShape ;
+    sh:property <http://example.org/5g-security#Asset_affectsAssetProperty>,
+        <http://example.org/5g-security#Asset_enablesProperty>,
+        <http://example.org/5g-security#Asset_exploitsProperty>,
+        <http://example.org/5g-security#Asset_hasAcceptableLevelProperty>,
+        <http://example.org/5g-security#Asset_hasIndicatorProperty>,
+        <http://example.org/5g-security#Asset_hasRiskLevelProperty>,
+        <http://example.org/5g-security#Asset_hasVulnerabilityProperty>,
+        <http://example.org/5g-security#Asset_impactLevelProperty>,
+        <http://example.org/5g-security#Asset_impactProperty>,
+        <http://example.org/5g-security#Asset_impactsProperty>,
+        <http://example.org/5g-security#Asset_isMitigatedByProperty>,
+        <http://example.org/5g-security#Asset_isOwnedByProperty>,
+        <http://example.org/5g-security#Asset_isReducedByProperty>,
+        <http://example.org/5g-security#Asset_lastAssessmentProperty>,
+        <http://example.org/5g-security#Asset_likelihoodProperty>,
+        <http://example.org/5g-security#Asset_mitigatesProperty>,
+        <http://example.org/5g-security#Asset_protectsProperty>,
+        <http://example.org/5g-security#Asset_requiresControlProperty>,
+        <http://example.org/5g-security#Asset_requiresMitigationProperty>,
+        <http://example.org/5g-security#Asset_riskLevelProperty>,
+        <http://example.org/5g-security#Asset_severityProperty>,
+        <http://example.org/5g-security#Asset_threatensProperty> ;
+    sh:targetClass <http://example.org/5g-security#Asset> .
+
+<http://example.org/5g-security#AttackVectorShape> a sh:NodeShape ;
+    sh:property <http://example.org/5g-security#AttackVector_affectsAssetProperty>,
+        <http://example.org/5g-security#AttackVector_enablesProperty>,
+        <http://example.org/5g-security#AttackVector_exploitsProperty>,
+        <http://example.org/5g-security#AttackVector_hasAcceptableLevelProperty>,
+        <http://example.org/5g-security#AttackVector_hasIndicatorProperty>,
+        <http://example.org/5g-security#AttackVector_hasRiskLevelProperty>,
+        <http://example.org/5g-security#AttackVector_hasVulnerabilityProperty>,
+        <http://example.org/5g-security#AttackVector_impactLevelProperty>,
+        <http://example.org/5g-security#AttackVector_impactProperty>,
+        <http://example.org/5g-security#AttackVector_impactsProperty>,
+        <http://example.org/5g-security#AttackVector_isMitigatedByProperty>,
+        <http://example.org/5g-security#AttackVector_isOwnedByProperty>,
+        <http://example.org/5g-security#AttackVector_isReducedByProperty>,
+        <http://example.org/5g-security#AttackVector_lastAssessmentProperty>,
+        <http://example.org/5g-security#AttackVector_likelihoodProperty>,
+        <http://example.org/5g-security#AttackVector_mitigatesProperty>,
+        <http://example.org/5g-security#AttackVector_protectsProperty>,
+        <http://example.org/5g-security#AttackVector_requiresControlProperty>,
+        <http://example.org/5g-security#AttackVector_requiresMitigationProperty>,
+        <http://example.org/5g-security#AttackVector_riskLevelProperty>,
+        <http://example.org/5g-security#AttackVector_severityProperty>,
+        <http://example.org/5g-security#AttackVector_threatensProperty> ;
+    sh:targetClass <http://example.org/5g-security#AttackVector> .
+
+<http://example.org/5g-security#CEFRequirementShape> a sh:NodeShape ;
+    sh:property <http://example.org/5g-security#CEFRequirement_affectsAssetProperty>,
+        <http://example.org/5g-security#CEFRequirement_enablesProperty>,
+        <http://example.org/5g-security#CEFRequirement_exploitsProperty>,
+        <http://example.org/5g-security#CEFRequirement_hasAcceptableLevelProperty>,
+        <http://example.org/5g-security#CEFRequirement_hasIndicatorProperty>,
+        <http://example.org/5g-security#CEFRequirement_hasRiskLevelProperty>,
+        <http://example.org/5g-security#CEFRequirement_hasVulnerabilityProperty>,
+        <http://example.org/5g-security#CEFRequirement_impactLevelProperty>,
+        <http://example.org/5g-security#CEFRequirement_impactProperty>,
+        <http://example.org/5g-security#CEFRequirement_impactsProperty>,
+        <http://example.org/5g-security#CEFRequirement_isMitigatedByProperty>,
+        <http://example.org/5g-security#CEFRequirement_isOwnedByProperty>,
+        <http://example.org/5g-security#CEFRequirement_isReducedByProperty>,
+        <http://example.org/5g-security#CEFRequirement_lastAssessmentProperty>,
+        <http://example.org/5g-security#CEFRequirement_likelihoodProperty>,
+        <http://example.org/5g-security#CEFRequirement_mitigatesProperty>,
+        <http://example.org/5g-security#CEFRequirement_protectsProperty>,
+        <http://example.org/5g-security#CEFRequirement_requiresControlProperty>,
+        <http://example.org/5g-security#CEFRequirement_requiresMitigationProperty>,
+        <http://example.org/5g-security#CEFRequirement_riskLevelProperty>,
+        <http://example.org/5g-security#CEFRequirement_severityProperty>,
+        <http://example.org/5g-security#CEFRequirement_threatensProperty> ;
+    sh:targetClass <http://example.org/5g-security#CEFRequirement> .
+
+<http://example.org/5g-security#ControlShape> a sh:NodeShape ;
+    sh:property <http://example.org/5g-security#Control_affectsAssetProperty>,
+        <http://example.org/5g-security#Control_enablesProperty>,
+        <http://example.org/5g-security#Control_exploitsProperty>,
+        <http://example.org/5g-security#Control_hasAcceptableLevelProperty>,
+        <http://example.org/5g-security#Control_hasIndicatorProperty>,
+        <http://example.org/5g-security#Control_hasRiskLevelProperty>,
+        <http://example.org/5g-security#Control_hasVulnerabilityProperty>,
+        <http://example.org/5g-security#Control_impactLevelProperty>,
+        <http://example.org/5g-security#Control_impactProperty>,
+        <http://example.org/5g-security#Control_impactsProperty>,
+        <http://example.org/5g-security#Control_isMitigatedByProperty>,
+        <http://example.org/5g-security#Control_isOwnedByProperty>,
+        <http://example.org/5g-security#Control_isReducedByProperty>,
+        <http://example.org/5g-security#Control_lastAssessmentProperty>,
+        <http://example.org/5g-security#Control_likelihoodProperty>,
+        <http://example.org/5g-security#Control_mitigatesProperty>,
+        <http://example.org/5g-security#Control_protectsProperty>,
+        <http://example.org/5g-security#Control_requiresControlProperty>,
+        <http://example.org/5g-security#Control_requiresMitigationProperty>,
+        <http://example.org/5g-security#Control_riskLevelProperty>,
+        <http://example.org/5g-security#Control_severityProperty>,
+        <http://example.org/5g-security#Control_threatensProperty> ;
+    sh:targetClass <http://example.org/5g-security#Control> .
+
+<http://example.org/5g-security#CountermeasureShape> a sh:NodeShape ;
+    sh:property <http://example.org/5g-security#Countermeasure_affectsAssetProperty>,
+        <http://example.org/5g-security#Countermeasure_enablesProperty>,
+        <http://example.org/5g-security#Countermeasure_exploitsProperty>,
+        <http://example.org/5g-security#Countermeasure_hasAcceptableLevelProperty>,
+        <http://example.org/5g-security#Countermeasure_hasIndicatorProperty>,
+        <http://example.org/5g-security#Countermeasure_hasRiskLevelProperty>,
+        <http://example.org/5g-security#Countermeasure_hasVulnerabilityProperty>,
+        <http://example.org/5g-security#Countermeasure_impactLevelProperty>,
+        <http://example.org/5g-security#Countermeasure_impactProperty>,
+        <http://example.org/5g-security#Countermeasure_impactsProperty>,
+        <http://example.org/5g-security#Countermeasure_isMitigatedByProperty>,
+        <http://example.org/5g-security#Countermeasure_isOwnedByProperty>,
+        <http://example.org/5g-security#Countermeasure_isReducedByProperty>,
+        <http://example.org/5g-security#Countermeasure_lastAssessmentProperty>,
+        <http://example.org/5g-security#Countermeasure_likelihoodProperty>,
+        <http://example.org/5g-security#Countermeasure_mitigatesProperty>,
+        <http://example.org/5g-security#Countermeasure_protectsProperty>,
+        <http://example.org/5g-security#Countermeasure_requiresControlProperty>,
+        <http://example.org/5g-security#Countermeasure_requiresMitigationProperty>,
+        <http://example.org/5g-security#Countermeasure_riskLevelProperty>,
+        <http://example.org/5g-security#Countermeasure_severityProperty>,
+        <http://example.org/5g-security#Countermeasure_threatensProperty> ;
+    sh:targetClass <http://example.org/5g-security#Countermeasure> .
+
+<http://example.org/5g-security#OwnerShape> a sh:NodeShape ;
+    sh:property <http://example.org/5g-security#Owner_affectsAssetProperty>,
+        <http://example.org/5g-security#Owner_enablesProperty>,
+        <http://example.org/5g-security#Owner_exploitsProperty>,
+        <http://example.org/5g-security#Owner_hasAcceptableLevelProperty>,
+        <http://example.org/5g-security#Owner_hasIndicatorProperty>,
+        <http://example.org/5g-security#Owner_hasRiskLevelProperty>,
+        <http://example.org/5g-security#Owner_hasVulnerabilityProperty>,
+        <http://example.org/5g-security#Owner_impactLevelProperty>,
+        <http://example.org/5g-security#Owner_impactProperty>,
+        <http://example.org/5g-security#Owner_impactsProperty>,
+        <http://example.org/5g-security#Owner_isMitigatedByProperty>,
+        <http://example.org/5g-security#Owner_isOwnedByProperty>,
+        <http://example.org/5g-security#Owner_isReducedByProperty>,
+        <http://example.org/5g-security#Owner_lastAssessmentProperty>,
+        <http://example.org/5g-security#Owner_likelihoodProperty>,
+        <http://example.org/5g-security#Owner_mitigatesProperty>,
+        <http://example.org/5g-security#Owner_protectsProperty>,
+        <http://example.org/5g-security#Owner_requiresControlProperty>,
+        <http://example.org/5g-security#Owner_requiresMitigationProperty>,
+        <http://example.org/5g-security#Owner_riskLevelProperty>,
+        <http://example.org/5g-security#Owner_severityProperty>,
+        <http://example.org/5g-security#Owner_threatensProperty> ;
+    sh:targetClass <http://example.org/5g-security#Owner> .
+
+<http://example.org/5g-security#RiskShape> a sh:NodeShape ;
+    sh:property <http://example.org/5g-security#Risk_affectsAssetProperty>,
+        <http://example.org/5g-security#Risk_enablesProperty>,
+        <http://example.org/5g-security#Risk_exploitsProperty>,
+        <http://example.org/5g-security#Risk_hasAcceptableLevelProperty>,
+        <http://example.org/5g-security#Risk_hasIndicatorProperty>,
+        <http://example.org/5g-security#Risk_hasRiskLevelProperty>,
+        <http://example.org/5g-security#Risk_hasVulnerabilityProperty>,
+        <http://example.org/5g-security#Risk_impactLevelProperty>,
+        <http://example.org/5g-security#Risk_impactProperty>,
+        <http://example.org/5g-security#Risk_impactsProperty>,
+        <http://example.org/5g-security#Risk_isMitigatedByProperty>,
+        <http://example.org/5g-security#Risk_isOwnedByProperty>,
+        <http://example.org/5g-security#Risk_isReducedByProperty>,
+        <http://example.org/5g-security#Risk_lastAssessmentProperty>,
+        <http://example.org/5g-security#Risk_likelihoodProperty>,
+        <http://example.org/5g-security#Risk_mitigatesProperty>,
+        <http://example.org/5g-security#Risk_protectsProperty>,
+        <http://example.org/5g-security#Risk_requiresControlProperty>,
+        <http://example.org/5g-security#Risk_requiresMitigationProperty>,
+        <http://example.org/5g-security#Risk_riskLevelProperty>,
+        <http://example.org/5g-security#Risk_severityProperty>,
+        <http://example.org/5g-security#Risk_threatensProperty> ;
+    sh:targetClass <http://example.org/5g-security#Risk> .
+
+<http://example.org/5g-security#ThreatIndicatorShape> a sh:NodeShape ;
+    sh:property <http://example.org/5g-security#ThreatIndicator_affectsAssetProperty>,
+        <http://example.org/5g-security#ThreatIndicator_enablesProperty>,
+        <http://example.org/5g-security#ThreatIndicator_exploitsProperty>,
+        <http://example.org/5g-security#ThreatIndicator_hasAcceptableLevelProperty>,
+        <http://example.org/5g-security#ThreatIndicator_hasIndicatorProperty>,
+        <http://example.org/5g-security#ThreatIndicator_hasRiskLevelProperty>,
+        <http://example.org/5g-security#ThreatIndicator_hasVulnerabilityProperty>,
+        <http://example.org/5g-security#ThreatIndicator_impactLevelProperty>,
+        <http://example.org/5g-security#ThreatIndicator_impactProperty>,
+        <http://example.org/5g-security#ThreatIndicator_impactsProperty>,
+        <http://example.org/5g-security#ThreatIndicator_isMitigatedByProperty>,
+        <http://example.org/5g-security#ThreatIndicator_isOwnedByProperty>,
+        <http://example.org/5g-security#ThreatIndicator_isReducedByProperty>,
+        <http://example.org/5g-security#ThreatIndicator_lastAssessmentProperty>,
+        <http://example.org/5g-security#ThreatIndicator_likelihoodProperty>,
+        <http://example.org/5g-security#ThreatIndicator_mitigatesProperty>,
+        <http://example.org/5g-security#ThreatIndicator_protectsProperty>,
+        <http://example.org/5g-security#ThreatIndicator_requiresControlProperty>,
+        <http://example.org/5g-security#ThreatIndicator_requiresMitigationProperty>,
+        <http://example.org/5g-security#ThreatIndicator_riskLevelProperty>,
+        <http://example.org/5g-security#ThreatIndicator_severityProperty>,
+        <http://example.org/5g-security#ThreatIndicator_threatensProperty> ;
+    sh:targetClass <http://example.org/5g-security#ThreatIndicator> .
+
+<http://example.org/5g-security#ThreatShape> a sh:NodeShape ;
+    sh:property <http://example.org/5g-security#Threat_affectsAssetProperty>,
+        <http://example.org/5g-security#Threat_enablesProperty>,
+        <http://example.org/5g-security#Threat_exploitsProperty>,
+        <http://example.org/5g-security#Threat_hasAcceptableLevelProperty>,
+        <http://example.org/5g-security#Threat_hasIndicatorProperty>,
+        <http://example.org/5g-security#Threat_hasRiskLevelProperty>,
+        <http://example.org/5g-security#Threat_hasVulnerabilityProperty>,
+        <http://example.org/5g-security#Threat_impactLevelProperty>,
+        <http://example.org/5g-security#Threat_impactProperty>,
+        <http://example.org/5g-security#Threat_impactsProperty>,
+        <http://example.org/5g-security#Threat_isMitigatedByProperty>,
+        <http://example.org/5g-security#Threat_isOwnedByProperty>,
+        <http://example.org/5g-security#Threat_isReducedByProperty>,
+        <http://example.org/5g-security#Threat_lastAssessmentProperty>,
+        <http://example.org/5g-security#Threat_likelihoodProperty>,
+        <http://example.org/5g-security#Threat_mitigatesProperty>,
+        <http://example.org/5g-security#Threat_protectsProperty>,
+        <http://example.org/5g-security#Threat_requiresControlProperty>,
+        <http://example.org/5g-security#Threat_requiresMitigationProperty>,
+        <http://example.org/5g-security#Threat_riskLevelProperty>,
+        <http://example.org/5g-security#Threat_severityProperty>,
+        <http://example.org/5g-security#Threat_threatensProperty> ;
+    sh:targetClass <http://example.org/5g-security#Threat> .
+
+<http://example.org/5g-security#VulnerabilityShape> a sh:NodeShape ;
+    sh:property <http://example.org/5g-security#Vulnerability_affectsAssetProperty>,
+        <http://example.org/5g-security#Vulnerability_enablesProperty>,
+        <http://example.org/5g-security#Vulnerability_exploitsProperty>,
+        <http://example.org/5g-security#Vulnerability_hasAcceptableLevelProperty>,
+        <http://example.org/5g-security#Vulnerability_hasIndicatorProperty>,
+        <http://example.org/5g-security#Vulnerability_hasRiskLevelProperty>,
+        <http://example.org/5g-security#Vulnerability_hasVulnerabilityProperty>,
+        <http://example.org/5g-security#Vulnerability_impactLevelProperty>,
+        <http://example.org/5g-security#Vulnerability_impactProperty>,
+        <http://example.org/5g-security#Vulnerability_impactsProperty>,
+        <http://example.org/5g-security#Vulnerability_isMitigatedByProperty>,
+        <http://example.org/5g-security#Vulnerability_isOwnedByProperty>,
+        <http://example.org/5g-security#Vulnerability_isReducedByProperty>,
+        <http://example.org/5g-security#Vulnerability_lastAssessmentProperty>,
+        <http://example.org/5g-security#Vulnerability_likelihoodProperty>,
+        <http://example.org/5g-security#Vulnerability_mitigatesProperty>,
+        <http://example.org/5g-security#Vulnerability_protectsProperty>,
+        <http://example.org/5g-security#Vulnerability_requiresControlProperty>,
+        <http://example.org/5g-security#Vulnerability_requiresMitigationProperty>,
+        <http://example.org/5g-security#Vulnerability_riskLevelProperty>,
+        <http://example.org/5g-security#Vulnerability_severityProperty>,
+        <http://example.org/5g-security#Vulnerability_threatensProperty> ;
+    sh:targetClass <http://example.org/5g-security#Vulnerability> .
+
+
+<http://example.org/5g-security#Asset_affectsAssetProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#affectsAsset." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#affectsAsset> .
+
+<http://example.org/5g-security#Asset_impactLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#impactLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impactLevel> ;
+    sh:in ("High" "Medium" "Low") ;
+    sh:datatype xsd:string ;
+    sh:message "Impact level must be one of High, Medium, or Low." .
+
+<http://example.org/5g-security#Asset_enablesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#enables." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#enables> .
+
+<http://example.org/5g-security#Asset_exploitsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#exploits." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#exploits> .
+
+<http://example.org/5g-security#Asset_hasAcceptableLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#hasAcceptableLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasAcceptableLevel> .
+
+<http://example.org/5g-security#Asset_hasIndicatorProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#hasIndicator." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasIndicator> .
+
+<http://example.org/5g-security#Asset_hasRiskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#hasRiskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasRiskLevel> .
+
+<http://example.org/5g-security#Asset_hasVulnerabilityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#hasVulnerability." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasVulnerability> .
+
+<http://example.org/5g-security#Asset_impactLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#impactLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impactLevel> .
+
+<http://example.org/5g-security#Asset_impactProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#impact." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impact> .
+
+<http://example.org/5g-security#Asset_impactsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#impacts." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impacts> .
+
+<http://example.org/5g-security#Asset_isMitigatedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#isMitigatedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isMitigatedBy> .
+
+<http://example.org/5g-security#Asset_isOwnedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#isOwnedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isOwnedBy> .
+
+<http://example.org/5g-security#Asset_isReducedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#isReducedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isReducedBy> .
+
+<http://example.org/5g-security#Asset_lastAssessmentProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#lastAssessment." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#lastAssessment> .
+
+<http://example.org/5g-security#Asset_likelihoodProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#likelihood." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#likelihood> .
+
+<http://example.org/5g-security#Asset_mitigatesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#mitigates." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#mitigates> .
+
+<http://example.org/5g-security#Asset_protectsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#protects." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#protects> .
+
+<http://example.org/5g-security#Asset_requiresControlProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#requiresControl." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresControl> .
+
+<http://example.org/5g-security#Asset_requiresMitigationProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#requiresMitigation." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresMitigation> .
+
+<http://example.org/5g-security#Asset_riskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#riskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#riskLevel> .
+
+<http://example.org/5g-security#Asset_severityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#severity." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#severity> .
+
+<http://example.org/5g-security#Asset_threatensProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Asset must have at least one value for http://example.org/5g-security#threatens." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#threatens> .
+
+<http://example.org/5g-security#AttackVector_affectsAssetProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#affectsAsset." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#affectsAsset> .
+
+<http://example.org/5g-security#AttackVector_enablesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#enables." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#enables> .
+
+<http://example.org/5g-security#AttackVector_exploitsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#exploits." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#exploits> .
+
+<http://example.org/5g-security#AttackVector_hasAcceptableLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#hasAcceptableLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasAcceptableLevel> .
+
+<http://example.org/5g-security#AttackVector_hasIndicatorProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#hasIndicator." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasIndicator> .
+
+<http://example.org/5g-security#AttackVector_hasRiskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#hasRiskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasRiskLevel> .
+
+<http://example.org/5g-security#AttackVector_hasVulnerabilityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#hasVulnerability." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasVulnerability> .
+
+<http://example.org/5g-security#AttackVector_impactLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#impactLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impactLevel> .
+
+<http://example.org/5g-security#AttackVector_impactProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#impact." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impact> .
+
+<http://example.org/5g-security#AttackVector_impactsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#impacts." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impacts> .
+
+<http://example.org/5g-security#AttackVector_isMitigatedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#isMitigatedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isMitigatedBy> .
+
+<http://example.org/5g-security#AttackVector_isOwnedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#isOwnedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isOwnedBy> .
+
+<http://example.org/5g-security#AttackVector_isReducedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#isReducedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isReducedBy> .
+
+<http://example.org/5g-security#AttackVector_lastAssessmentProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#lastAssessment." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#lastAssessment> .
+
+<http://example.org/5g-security#AttackVector_likelihoodProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#likelihood." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#likelihood> .
+
+<http://example.org/5g-security#AttackVector_mitigatesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#mitigates." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#mitigates> .
+
+<http://example.org/5g-security#AttackVector_protectsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#protects." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#protects> .
+
+<http://example.org/5g-security#AttackVector_requiresControlProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#requiresControl." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresControl> .
+
+<http://example.org/5g-security#AttackVector_requiresMitigationProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#requiresMitigation." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresMitigation> .
+
+<http://example.org/5g-security#AttackVector_riskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#riskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#riskLevel> .
+
+<http://example.org/5g-security#AttackVector_severityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#severity." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#severity> .
+
+<http://example.org/5g-security#AttackVector_threatensProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#AttackVector must have at least one value for http://example.org/5g-security#threatens." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#threatens> .
+
+<http://example.org/5g-security#CEFRequirement_affectsAssetProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#affectsAsset." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#affectsAsset> .
+
+<http://example.org/5g-security#CEFRequirement_enablesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#enables." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#enables> .
+
+<http://example.org/5g-security#CEFRequirement_exploitsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#exploits." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#exploits> .
+
+<http://example.org/5g-security#CEFRequirement_hasAcceptableLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#hasAcceptableLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasAcceptableLevel> .
+
+<http://example.org/5g-security#CEFRequirement_hasIndicatorProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#hasIndicator." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasIndicator> .
+
+<http://example.org/5g-security#CEFRequirement_hasRiskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#hasRiskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasRiskLevel> .
+
+<http://example.org/5g-security#CEFRequirement_hasVulnerabilityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#hasVulnerability." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasVulnerability> .
+
+<http://example.org/5g-security#CEFRequirement_impactLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#impactLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impactLevel> .
+
+<http://example.org/5g-security#CEFRequirement_impactProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#impact." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impact> .
+
+<http://example.org/5g-security#CEFRequirement_impactsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#impacts." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impacts> .
+
+<http://example.org/5g-security#CEFRequirement_isMitigatedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#isMitigatedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isMitigatedBy> .
+
+<http://example.org/5g-security#CEFRequirement_isOwnedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#isOwnedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isOwnedBy> .
+
+<http://example.org/5g-security#CEFRequirement_isReducedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#isReducedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isReducedBy> .
+
+<http://example.org/5g-security#CEFRequirement_lastAssessmentProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#lastAssessment." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#lastAssessment> .
+
+<http://example.org/5g-security#CEFRequirement_likelihoodProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#likelihood." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#likelihood> .
+
+<http://example.org/5g-security#CEFRequirement_mitigatesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#mitigates." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#mitigates> .
+
+<http://example.org/5g-security#CEFRequirement_protectsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#protects." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#protects> .
+
+<http://example.org/5g-security#CEFRequirement_requiresControlProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#requiresControl." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresControl> .
+
+<http://example.org/5g-security#CEFRequirement_requiresMitigationProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#requiresMitigation." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresMitigation> .
+
+<http://example.org/5g-security#CEFRequirement_riskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#riskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#riskLevel> .
+
+<http://example.org/5g-security#CEFRequirement_severityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#severity." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#severity> .
+
+<http://example.org/5g-security#CEFRequirement_threatensProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#CEFRequirement must have at least one value for http://example.org/5g-security#threatens." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#threatens> .
+
+<http://example.org/5g-security#Control_affectsAssetProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#affectsAsset." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#affectsAsset> .
+
+<http://example.org/5g-security#Control_enablesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#enables." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#enables> .
+
+<http://example.org/5g-security#Control_exploitsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#exploits." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#exploits> .
+
+<http://example.org/5g-security#Control_hasAcceptableLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#hasAcceptableLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasAcceptableLevel> .
+
+<http://example.org/5g-security#Control_hasIndicatorProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#hasIndicator." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasIndicator> .
+
+<http://example.org/5g-security#Control_hasRiskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#hasRiskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasRiskLevel> .
+
+<http://example.org/5g-security#Control_hasVulnerabilityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#hasVulnerability." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasVulnerability> .
+
+<http://example.org/5g-security#Control_impactLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#impactLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impactLevel> .
+
+<http://example.org/5g-security#Control_impactProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#impact." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impact> .
+
+<http://example.org/5g-security#Control_impactsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#impacts." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impacts> .
+
+<http://example.org/5g-security#Control_isMitigatedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#isMitigatedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isMitigatedBy> .
+
+<http://example.org/5g-security#Control_isOwnedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#isOwnedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isOwnedBy> .
+
+<http://example.org/5g-security#Control_isReducedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#isReducedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isReducedBy> .
+
+<http://example.org/5g-security#Control_lastAssessmentProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#lastAssessment." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#lastAssessment> .
+
+<http://example.org/5g-security#Control_likelihoodProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#likelihood." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#likelihood> .
+
+<http://example.org/5g-security#Control_mitigatesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#mitigates." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#mitigates> .
+
+<http://example.org/5g-security#Control_protectsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#protects." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#protects> .
+
+<http://example.org/5g-security#Control_requiresControlProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#requiresControl." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresControl> .
+
+<http://example.org/5g-security#Control_requiresMitigationProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#requiresMitigation." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresMitigation> .
+
+<http://example.org/5g-security#Control_riskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#riskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#riskLevel> .
+
+<http://example.org/5g-security#Control_severityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#severity." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#severity> .
+
+<http://example.org/5g-security#Control_threatensProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Control must have at least one value for http://example.org/5g-security#threatens." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#threatens> .
+
+<http://example.org/5g-security#Countermeasure_affectsAssetProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#affectsAsset." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#affectsAsset> .
+
+<http://example.org/5g-security#Countermeasure_enablesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#enables." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#enables> .
+
+<http://example.org/5g-security#Countermeasure_exploitsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#exploits." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#exploits> .
+
+<http://example.org/5g-security#Countermeasure_hasAcceptableLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#hasAcceptableLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasAcceptableLevel> .
+
+<http://example.org/5g-security#Countermeasure_hasIndicatorProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#hasIndicator." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasIndicator> .
+
+<http://example.org/5g-security#Countermeasure_hasRiskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#hasRiskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasRiskLevel> .
+
+<http://example.org/5g-security#Countermeasure_hasVulnerabilityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#hasVulnerability." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasVulnerability> .
+
+<http://example.org/5g-security#Countermeasure_impactLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#impactLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impactLevel> .
+
+<http://example.org/5g-security#Countermeasure_impactProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#impact." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impact> .
+
+<http://example.org/5g-security#Countermeasure_impactsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#impacts." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impacts> .
+
+<http://example.org/5g-security#Countermeasure_isMitigatedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#isMitigatedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isMitigatedBy> .
+
+<http://example.org/5g-security#Countermeasure_isOwnedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#isOwnedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isOwnedBy> .
+
+<http://example.org/5g-security#Countermeasure_isReducedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#isReducedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isReducedBy> .
+
+<http://example.org/5g-security#Countermeasure_lastAssessmentProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#lastAssessment." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#lastAssessment> .
+
+<http://example.org/5g-security#Countermeasure_likelihoodProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#likelihood." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#likelihood> .
+
+<http://example.org/5g-security#Countermeasure_mitigatesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#mitigates." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#mitigates> .
+
+<http://example.org/5g-security#Countermeasure_protectsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#protects." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#protects> .
+
+<http://example.org/5g-security#Countermeasure_requiresControlProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#requiresControl." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresControl> .
+
+<http://example.org/5g-security#Countermeasure_requiresMitigationProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#requiresMitigation." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresMitigation> .
+
+<http://example.org/5g-security#Countermeasure_riskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#riskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#riskLevel> .
+
+<http://example.org/5g-security#Countermeasure_severityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#severity." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#severity> .
+
+<http://example.org/5g-security#Countermeasure_threatensProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Countermeasure must have at least one value for http://example.org/5g-security#threatens." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#threatens> .
+
+<http://example.org/5g-security#Owner_affectsAssetProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#affectsAsset." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#affectsAsset> .
+
+<http://example.org/5g-security#Owner_enablesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#enables." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#enables> .
+
+<http://example.org/5g-security#Owner_exploitsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#exploits." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#exploits> .
+
+<http://example.org/5g-security#Owner_hasAcceptableLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#hasAcceptableLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasAcceptableLevel> .
+
+<http://example.org/5g-security#Owner_hasIndicatorProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#hasIndicator." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasIndicator> .
+
+<http://example.org/5g-security#Owner_hasRiskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#hasRiskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasRiskLevel> .
+
+<http://example.org/5g-security#Owner_hasVulnerabilityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#hasVulnerability." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasVulnerability> .
+
+<http://example.org/5g-security#Owner_impactLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#impactLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impactLevel> .
+
+<http://example.org/5g-security#Owner_impactProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#impact." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impact> .
+
+<http://example.org/5g-security#Owner_impactsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#impacts." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impacts> .
+
+<http://example.org/5g-security#Owner_isMitigatedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#isMitigatedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isMitigatedBy> .
+
+<http://example.org/5g-security#Owner_isOwnedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#isOwnedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isOwnedBy> .
+
+<http://example.org/5g-security#Owner_isReducedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#isReducedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isReducedBy> .
+
+<http://example.org/5g-security#Owner_lastAssessmentProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#lastAssessment." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#lastAssessment> .
+
+<http://example.org/5g-security#Owner_likelihoodProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#likelihood." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#likelihood> .
+
+<http://example.org/5g-security#Owner_mitigatesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#mitigates." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#mitigates> .
+
+<http://example.org/5g-security#Owner_protectsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#protects." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#protects> .
+
+<http://example.org/5g-security#Owner_requiresControlProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#requiresControl." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresControl> .
+
+<http://example.org/5g-security#Owner_requiresMitigationProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#requiresMitigation." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresMitigation> .
+
+<http://example.org/5g-security#Owner_riskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#riskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#riskLevel> .
+
+<http://example.org/5g-security#Owner_severityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#severity." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#severity> .
+
+<http://example.org/5g-security#Owner_threatensProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Owner must have at least one value for http://example.org/5g-security#threatens." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#threatens> .
+
+<http://example.org/5g-security#Risk_affectsAssetProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#affectsAsset." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#affectsAsset> .
+
+<http://example.org/5g-security#Risk_enablesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#enables." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#enables> .
+
+<http://example.org/5g-security#Risk_exploitsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#exploits." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#exploits> .
+
+<http://example.org/5g-security#Risk_hasAcceptableLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#hasAcceptableLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasAcceptableLevel> .
+
+<http://example.org/5g-security#Risk_hasIndicatorProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#hasIndicator." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasIndicator> .
+
+<http://example.org/5g-security#Risk_hasRiskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#hasRiskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasRiskLevel> .
+
+<http://example.org/5g-security#Risk_hasVulnerabilityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#hasVulnerability." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasVulnerability> .
+
+<http://example.org/5g-security#Risk_impactLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#impactLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impactLevel> .
+
+<http://example.org/5g-security#Risk_impactProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#impact." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impact> .
+
+<http://example.org/5g-security#Risk_impactsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#impacts." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impacts> .
+
+<http://example.org/5g-security#Risk_isMitigatedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#isMitigatedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isMitigatedBy> .
+
+<http://example.org/5g-security#Risk_isOwnedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#isOwnedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isOwnedBy> .
+
+<http://example.org/5g-security#Risk_isReducedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#isReducedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isReducedBy> .
+
+<http://example.org/5g-security#Risk_lastAssessmentProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#lastAssessment." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#lastAssessment> .
+
+<http://example.org/5g-security#Risk_likelihoodProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#likelihood." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#likelihood> .
+
+<http://example.org/5g-security#Risk_mitigatesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#mitigates." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#mitigates> .
+
+<http://example.org/5g-security#Risk_protectsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#protects." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#protects> .
+
+<http://example.org/5g-security#Risk_requiresControlProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#requiresControl." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresControl> .
+
+<http://example.org/5g-security#Risk_requiresMitigationProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#requiresMitigation." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresMitigation> .
+
+<http://example.org/5g-security#Risk_riskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#riskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#riskLevel> .
+
+<http://example.org/5g-security#Risk_severityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#severity." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#severity> .
+
+<http://example.org/5g-security#Risk_threatensProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Risk must have at least one value for http://example.org/5g-security#threatens." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#threatens> .
+
+<http://example.org/5g-security#ThreatIndicator_affectsAssetProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#affectsAsset." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#affectsAsset> .
+
+<http://example.org/5g-security#ThreatIndicator_enablesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#enables." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#enables> .
+
+<http://example.org/5g-security#ThreatIndicator_exploitsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#exploits." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#exploits> .
+
+<http://example.org/5g-security#ThreatIndicator_hasAcceptableLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#hasAcceptableLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasAcceptableLevel> .
+
+<http://example.org/5g-security#ThreatIndicator_hasIndicatorProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#hasIndicator." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasIndicator> .
+
+<http://example.org/5g-security#ThreatIndicator_hasRiskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#hasRiskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasRiskLevel> .
+
+<http://example.org/5g-security#ThreatIndicator_hasVulnerabilityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#hasVulnerability." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasVulnerability> .
+
+<http://example.org/5g-security#ThreatIndicator_impactLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#impactLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impactLevel> .
+
+<http://example.org/5g-security#ThreatIndicator_impactProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#impact." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impact> .
+
+<http://example.org/5g-security#ThreatIndicator_impactsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#impacts." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impacts> .
+
+<http://example.org/5g-security#ThreatIndicator_isMitigatedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#isMitigatedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isMitigatedBy> .
+
+<http://example.org/5g-security#ThreatIndicator_isOwnedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#isOwnedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isOwnedBy> .
+
+<http://example.org/5g-security#ThreatIndicator_isReducedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#isReducedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isReducedBy> .
+
+<http://example.org/5g-security#ThreatIndicator_lastAssessmentProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#lastAssessment." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#lastAssessment> .
+
+<http://example.org/5g-security#ThreatIndicator_likelihoodProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#likelihood." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#likelihood> .
+
+<http://example.org/5g-security#ThreatIndicator_mitigatesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#mitigates." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#mitigates> .
+
+<http://example.org/5g-security#ThreatIndicator_protectsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#protects." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#protects> .
+
+<http://example.org/5g-security#ThreatIndicator_requiresControlProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#requiresControl." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresControl> .
+
+<http://example.org/5g-security#ThreatIndicator_requiresMitigationProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#requiresMitigation." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresMitigation> .
+
+<http://example.org/5g-security#ThreatIndicator_riskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#riskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#riskLevel> .
+
+<http://example.org/5g-security#ThreatIndicator_severityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#severity." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#severity> .
+
+<http://example.org/5g-security#ThreatIndicator_threatensProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#ThreatIndicator must have at least one value for http://example.org/5g-security#threatens." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#threatens> .
+
+<http://example.org/5g-security#Threat_affectsAssetProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#affectsAsset." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#affectsAsset> .
+
+<http://example.org/5g-security#Threat_enablesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#enables." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#enables> .
+
+<http://example.org/5g-security#Threat_exploitsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#exploits." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#exploits> .
+
+<http://example.org/5g-security#Threat_hasAcceptableLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#hasAcceptableLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasAcceptableLevel> .
+
+<http://example.org/5g-security#Threat_hasIndicatorProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#hasIndicator." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasIndicator> .
+
+<http://example.org/5g-security#Threat_hasRiskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#hasRiskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasRiskLevel> .
+
+<http://example.org/5g-security#Threat_hasVulnerabilityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#hasVulnerability." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasVulnerability> .
+
+<http://example.org/5g-security#Threat_impactLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#impactLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impactLevel> .
+
+<http://example.org/5g-security#Threat_impactProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#impact." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impact> .
+
+<http://example.org/5g-security#Threat_impactsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#impacts." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impacts> .
+
+<http://example.org/5g-security#Threat_isMitigatedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#isMitigatedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isMitigatedBy> .
+
+<http://example.org/5g-security#Threat_isOwnedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#isOwnedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isOwnedBy> .
+
+<http://example.org/5g-security#Threat_isReducedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#isReducedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isReducedBy> .
+
+<http://example.org/5g-security#Threat_lastAssessmentProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#lastAssessment." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#lastAssessment> .
+
+<http://example.org/5g-security#Threat_likelihoodProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#likelihood." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#likelihood> .
+
+<http://example.org/5g-security#Threat_mitigatesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#mitigates." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#mitigates> .
+
+<http://example.org/5g-security#Threat_protectsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#protects." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#protects> .
+
+<http://example.org/5g-security#Threat_requiresControlProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#requiresControl." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresControl> .
+
+<http://example.org/5g-security#Threat_requiresMitigationProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#requiresMitigation." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresMitigation> .
+
+<http://example.org/5g-security#Threat_riskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#riskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#riskLevel> .
+
+<http://example.org/5g-security#Threat_severityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#severity." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#severity> .
+
+<http://example.org/5g-security#Threat_threatensProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Threat must have at least one value for http://example.org/5g-security#threatens." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#threatens> .
+
+<http://example.org/5g-security#Vulnerability_affectsAssetProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#affectsAsset." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#affectsAsset> .
+
+<http://example.org/5g-security#Vulnerability_enablesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#enables." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#enables> .
+
+<http://example.org/5g-security#Vulnerability_exploitsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#exploits." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#exploits> .
+
+<http://example.org/5g-security#Vulnerability_hasAcceptableLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#hasAcceptableLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasAcceptableLevel> .
+
+<http://example.org/5g-security#Vulnerability_hasIndicatorProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#hasIndicator." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasIndicator> .
+
+<http://example.org/5g-security#Vulnerability_hasRiskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#hasRiskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasRiskLevel> .
+
+<http://example.org/5g-security#Vulnerability_hasVulnerabilityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#hasVulnerability." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#hasVulnerability> .
+
+<http://example.org/5g-security#Vulnerability_impactLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#impactLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impactLevel> .
+
+<http://example.org/5g-security#Vulnerability_impactProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#impact." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impact> .
+
+<http://example.org/5g-security#Vulnerability_impactsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#impacts." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#impacts> .
+
+<http://example.org/5g-security#Vulnerability_isMitigatedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#isMitigatedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isMitigatedBy> .
+
+<http://example.org/5g-security#Vulnerability_isOwnedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#isOwnedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isOwnedBy> .
+
+<http://example.org/5g-security#Vulnerability_isReducedByProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#isReducedBy." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#isReducedBy> .
+
+<http://example.org/5g-security#Vulnerability_lastAssessmentProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#lastAssessment." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#lastAssessment> .
+
+<http://example.org/5g-security#Vulnerability_likelihoodProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#likelihood." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#likelihood> .
+
+<http://example.org/5g-security#Vulnerability_mitigatesProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#mitigates." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#mitigates> .
+
+<http://example.org/5g-security#Vulnerability_protectsProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#protects." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#protects> .
+
+<http://example.org/5g-security#Vulnerability_requiresControlProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#requiresControl." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresControl> .
+
+<http://example.org/5g-security#Vulnerability_requiresMitigationProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#requiresMitigation." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#requiresMitigation> .
+
+<http://example.org/5g-security#Vulnerability_riskLevelProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#riskLevel." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#riskLevel> .
+
+<http://example.org/5g-security#Vulnerability_severityProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#severity." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#severity> .
+
+<http://example.org/5g-security#Vulnerability_threatensProperty> a sh:PropertyShape ;
+    sh:message "Instances of http://example.org/5g-security#Vulnerability must have at least one value for http://example.org/5g-security#threatens." ;
+    sh:minCount 1 ;
+    sh:path <http://example.org/5g-security#threatens> .
+
+# Additions for testing
+<http://example.org/5g-security#DataBreach> a <http://example.org/5g-security#Threat> ;
+    <http://example.org/5g-security#label> "Unauthorized access to sensitive data" .
+

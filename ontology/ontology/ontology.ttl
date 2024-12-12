@@ -1,0 +1,312 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ex: <https://github.com/SecOntologyLab/5G-hybrid-threats#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/5g-security> a owl:Ontology ;
+    rdfs:label "5G Security Ontology"@en ;
+    rdfs:comment "Ontology for 5G security compliance and hybrid threat detection"@en .
+
+<https://github.com/SecOntologyLab/5G-hybrid-threats> a owl:Ontology ;
+    rdfs:label "5G Hybrid Threats Ontology"@en ;
+    rdfs:comment "Ontology for 5G cybersecurity compliance and hybrid threat modeling"@en .
+
+ex:ComplianceMeasure rdfs:label "Compliance Measure"@en ;
+    rdfs:subClassOf ex:Control .
+
+ex:CompliancePenalty a ex:FinancialRisk ;
+    rdfs:label "Compliance Penalty Risk"@en ;
+    ex:hasAcceptableLevel "Low" ;
+    ex:hasRiskLevel "High" ;
+    ex:requiresMitigation ex:ComplianceMonitoring .
+
+ex:CoreNetwork rdfs:label "Core Network"@en ;
+    rdfs:subClassOf ex:NetworkComponent .
+
+ex:CrossBorderVulnerability a ex:OperationalRisk ;
+    rdfs:label "Cross Border Vulnerability"@en ;
+    ex:hasAcceptableLevel "Low" ;
+    ex:hasRiskLevel "Medium" ;
+    ex:requiresMitigation ex:HandoverProtocols .
+
+ex:DataProtectionFailure a ex:StrategicRisk ;
+    rdfs:label "Data Protection Failure"@en ;
+    ex:hasAcceptableLevel "Low" ;
+    ex:hasRiskLevel "High" ;
+    ex:impactsRequirement ex:DataSecurityRequirement ;
+    ex:requiresMitigation ex:DataSecurityEnhancement .
+
+ex:EdgeComponent rdfs:label "Edge Component"@en ;
+    rdfs:subClassOf ex:NetworkComponent .
+
+ex:NG-RANComponent rdfs:label "NG-RAN Component"@en ;
+    rdfs:subClassOf ex:NetworkComponent ;
+    rdfs:comment "Represents the Next-Generation Radio Access Network, a critical component of 5G systems responsible for radio communication and connectivity."@en .
+
+ex:DDoSVulnerability a owl:Class ;
+    rdfs:subClassOf ex:Vulnerability ;
+    rdfs:label "Distributed Denial of Service Vulnerability"@en ;
+    rdfs:comment "Represents a vulnerability in NG-RAN susceptible to DDoS attacks."@en .
+
+ex:NG-RANComponent ex:connectsTo ex:EdgeComponent ;
+    ex:hasVulnerability ex:DDoSVulnerability .
+
+ex:HighRiskSupplierDependency a ex:StrategicRisk ;
+    rdfs:label "High Risk Supplier Dependency"@en ;
+    ex:hasAcceptableLevel "Medium" ;
+    ex:hasRiskLevel "High" ;
+    ex:impactsRequirement ex:SupplierRequirement ;
+    ex:requiresMitigation ex:SupplierDiversification .
+
+ex:HighRiskSupplierRequirement rdfs:label "High Risk Supplier Requirement"@en ;
+    rdfs:subClassOf ex:CEFRequirement .
+
+ex:HybridThreat rdfs:label "Hybrid Threat"@en ;
+    rdfs:subClassOf ex:Threat .
+
+ex:InfrastructureDamage a ex:FinancialRisk ;
+    rdfs:label "Infrastructure Damage Risk"@en ;
+    ex:hasAcceptableLevel "Low" ;
+    ex:hasRiskLevel "Medium" ;
+    ex:requiresMitigation ex:PhysicalProtection .
+
+ex:NFVComponent rdfs:label "NFV Component"@en ;
+    rdfs:subClassOf ex:NetworkComponent .
+
+ex:NetworkResilienceRequirement rdfs:label "Network Resilience Requirement"@en ;
+    rdfs:subClassOf ex:CEFRequirement .
+
+ex:OperatorControlWeakness a ex:StrategicRisk ;
+    rdfs:label "Network Operator Control Weakness"@en ;
+    ex:hasAcceptableLevel "Low" ;
+    ex:hasRiskLevel "High" ;
+    ex:impactsRequirement ex:OperatorRequirement ;
+    ex:requiresMitigation ex:OperatorEmpowerment .
+
+ex:OperatorEmpowermentRequirement rdfs:label "Operator Empowerment Requirement"@en ;
+    rdfs:subClassOf ex:CEFRequirement .
+
+ex:QoSDegradation a ex:OperationalRisk ;
+    rdfs:label "Quality of Service Degradation"@en ;
+    ex:hasAcceptableLevel "Low" ;
+    ex:hasRiskLevel "Medium" ;
+    ex:requiresMitigation ex:PerformanceMonitoring .
+
+ex:RegulatoryNonCompliance a ex:ReputationalRisk ;
+    rdfs:label "Regulatory Non-Compliance"@en ;
+    ex:hasAcceptableLevel "Low" ;
+    ex:hasRiskLevel "High" ;
+    ex:requiresMitigation ex:ComplianceFramework .
+
+ex:SDNComponent rdfs:label "SDN Component"@en ;
+    rdfs:subClassOf ex:NetworkComponent .
+
+ex:SecurityMeasure rdfs:label "Security Measure"@en ;
+    rdfs:subClassOf ex:Control .
+
+ex:ServiceContinuityFailure a ex:OperationalRisk ;
+    rdfs:label "Service Continuity Failure"@en ;
+    ex:affectsAsset ex:CrossBorderHandover ;
+    ex:hasAcceptableLevel "Low" ;
+    ex:hasRiskLevel "High" ;
+    ex:requiresMitigation ex:RedundancyImplementation .
+
+ex:SupplyChainVulnerability a ex:StrategicRisk ;
+    rdfs:label "Supply Chain Vulnerability"@en ;
+    ex:hasAcceptableLevel "Medium" ;
+    ex:hasRiskLevel "High" ;
+    ex:impactsRequirement ex:ResilienceRequirement ;
+    ex:requiresMitigation ex:SupplyChainResilience .
+
+ex:UserTrustLoss a ex:ReputationalRisk ;
+    rdfs:label "User Trust Loss"@en ;
+    ex:hasAcceptableLevel "Low" ;
+    ex:hasRiskLevel "Medium" ;
+    ex:requiresMitigation ex:TransparencyMeasures .
+
+ex:affectsAsset a owl:ObjectProperty ;
+    rdfs:domain ex:Risk ;
+    rdfs:range ex:Asset .
+
+ex:enables a owl:ObjectProperty ;
+    rdfs:domain ex:AttackVector ;
+    rdfs:range ex:Threat .
+
+ex:exploits a owl:ObjectProperty ;
+    rdfs:domain ex:Threat ;
+    rdfs:range ex:Vulnerability .
+
+ex:hasAcceptableLevel a owl:DatatypeProperty ;
+    rdfs:domain ex:Risk ;
+    rdfs:range xsd:string .
+
+ex:hasIndicator a owl:ObjectProperty ;
+    rdfs:domain ex:Threat ;
+    rdfs:range ex:ThreatIndicator .
+
+ex:hasRiskLevel a owl:DatatypeProperty ;
+    rdfs:domain ex:Risk ;
+    rdfs:range xsd:string .
+
+ex:connectsTo a owl:ObjectProperty ;
+    rdfs:domain ex:NetworkComponent ;
+    rdfs:range ex:NetworkComponent ;
+    rdfs:label "connects to"@en ;
+    rdfs:comment "Represents a connection between two network components."@en .
+
+ex:hasVulnerability a owl:ObjectProperty ;
+    rdfs:domain ex:Asset ;
+    rdfs:range ex:Vulnerability .
+
+ex:hasVulnerability a owl:ObjectProperty ;
+    rdfs:domain ex:NetworkComponent ;
+    rdfs:range ex:Vulnerability ;
+    rdfs:label "has vulnerability"@en ;
+    rdfs:comment "Indicates a vulnerability associated with a network component."@en .
+
+ex:impact a owl:DatatypeProperty ;
+    rdfs:domain ex:Risk ;
+    rdfs:range xsd:decimal .
+
+ex:impactLevel a owl:DatatypeProperty ;
+    rdfs:domain ex:Risk ;
+    rdfs:range xsd:string .
+
+ex:impacts a owl:ObjectProperty ;
+    rdfs:domain ex:Threat ;
+    rdfs:range ex:Asset .
+
+ex:isMitigatedBy a owl:ObjectProperty ;
+    rdfs:domain ex:Risk ;
+    rdfs:range ex:Control .
+
+ex:isOwnedBy a owl:ObjectProperty ;
+    rdfs:domain ex:Risk ;
+    rdfs:range ex:Owner .
+
+ex:isReducedBy a owl:ObjectProperty ;
+    rdfs:domain ex:Risk ;
+    rdfs:range ex:Countermeasure .
+
+ex:lastAssessment a owl:DatatypeProperty ;
+    rdfs:domain ex:Asset ;
+    rdfs:range xsd:dateTime .
+
+ex:likelihood a owl:DatatypeProperty ;
+    rdfs:domain ex:Risk ;
+    rdfs:range xsd:decimal .
+
+ex:mitigates a owl:ObjectProperty ;
+    rdfs:domain ex:Control ;
+    rdfs:range ex:Risk .
+
+ex:protects a owl:ObjectProperty ;
+    rdfs:domain ex:Control ;
+    rdfs:range ex:Asset .
+
+ex:requiresControl a owl:ObjectProperty ;
+    rdfs:domain ex:CEFRequirement ;
+    rdfs:range ex:Control .
+
+ex:requiresMitigation a owl:ObjectProperty ;
+    rdfs:domain ex:Risk ;
+    rdfs:range ex:Countermeasure .
+
+ex:riskLevel a owl:DatatypeProperty ;
+    rdfs:domain ex:Risk ;
+    rdfs:range xsd:string .
+
+ex:severity a owl:DatatypeProperty ;
+    rdfs:domain ex:Risk ;
+    rdfs:range xsd:decimal .
+
+ex:threatens a owl:ObjectProperty ;
+    rdfs:domain ex:Threat ;
+    rdfs:range ex:Asset .
+
+ex:AttackVector a owl:Class ;
+    rdfs:label "Attack Vector"@en ;
+    rdfs:comment "Path or means by which a threat actor can exploit a vulnerability"@en .
+
+ex:DataSecurityRequirement rdfs:label "Data Security Requirement"@en ;
+    rdfs:subClassOf ex:CEFRequirement .
+
+ex:OperatorRequirement rdfs:label "Operator Empowerment Requirement"@en ;
+    rdfs:subClassOf ex:CEFRequirement .
+
+ex:Owner a owl:Class ;
+    rdfs:label "Owner"@en ;
+    rdfs:comment "Entity responsible for managing and mitigating risks"@en .
+
+ex:ResilienceRequirement rdfs:label "Network Resilience Requirement"@en ;
+    rdfs:subClassOf ex:CEFRequirement .
+
+ex:SupplierRequirement rdfs:label "High Risk Supplier Requirement"@en ;
+    rdfs:subClassOf ex:CEFRequirement .
+
+ex:ThreatIndicator a owl:Class ;
+    rdfs:label "Threat Indicator"@en ;
+    rdfs:comment "Indicator that may suggest presence of a hybrid threat"@en .
+
+ex:Countermeasure a owl:Class ;
+    rdfs:label "Countermeasure"@en ;
+    rdfs:comment "Action taken to protect against threats"@en .
+
+ex:FinancialRisk rdfs:label "Financial Risk"@en ;
+    rdfs:subClassOf ex:Risk ;
+    ex:impactArea "Cost Impact"^^xsd:string ;
+    ex:riskLevel "High"^^xsd:string .
+
+ex:ReputationalRisk rdfs:label "Reputational Risk"@en ;
+    rdfs:subClassOf ex:Risk ;
+    ex:impactArea "Trust and Compliance"^^xsd:string ;
+    ex:riskLevel "Medium"^^xsd:string .
+
+ex:Vulnerability a owl:Class ;
+    rdfs:label "Vulnerability"@en ;
+    rdfs:comment "Weakness that can be exploited by threats"@en .
+
+ex:OperationalRisk rdfs:label "Operational Risk"@en ;
+    rdfs:subClassOf ex:Risk ;
+    ex:impactArea "Service Continuity"^^xsd:string ;
+    ex:riskLevel "Medium"^^xsd:string .
+
+ex:NetworkComponent rdfs:label "Network Component"@en ;
+    rdfs:subClassOf ex:Asset .
+
+ex:StrategicRisk rdfs:label "Strategic Risk"@en ;
+    rdfs:subClassOf ex:Risk ;
+    ex:impactArea "Strategic Autonomy"^^xsd:string ;
+    ex:riskLevel "High"^^xsd:string .
+
+ex:Control a owl:Class ;
+    rdfs:label "Control"@en ;
+    rdfs:comment "Measure used to modify risk"@en .
+
+ex:Threat a owl:Class ;
+    rdfs:label "Threat"@en ;
+    rdfs:comment "Potential cause of an incident that may harm assets"@en .
+
+ex:Asset a owl:Class ;
+    rdfs:label "Asset"@en ;
+    rdfs:comment "Any valuable component in the 5G infrastructure"@en,
+        "Something of value that needs protection"@en .
+
+ex:CEFRequirement a owl:Class ;
+    rdfs:label "CEF Requirement"@en ;
+    rdfs:comment "European Commission's Connecting Europe Facility cybersecurity requirements"@en .
+
+ex:Risk a owl:Class ;
+    rdfs:label "Risk"@en ;
+    rdfs:comment "A potential threat that could harm an asset or organization"@en,
+        "Central risk concept for 5G security framework"@en .
+
+ex:UserTrustLoss a owl:Class ;
+    rdfs:label "User Trust Loss" ;
+    rdfs:comment "A class representing a scenario where users lose trust in the system." .
+
+ex:DataBreach a ex:Threat ;
+    ex:label "Unauthorized access to sensitive data" .
+
+
