@@ -3,8 +3,8 @@ from rdflib import Graph
 from pyshacl import validate
 
 # Paths to the corrected ontology and SHACL shapes files
-# ontology_file = r"C://Users/andre/5G-hybrid-threats/ontology/ontology.ttl"  # Update with actual path
-# shapes_file = r"C://Users/andre/5G-hybrid-threats/scripts/shapes.ttl"       # Update with actual path
+# ontology_file = r"C://Users/andre/5G-hybrid-threats/ontology/ontology/ontology.ttl"  # Update with actual path
+# shapes_file = r"C://Users/andre/5G-hybrid-threats/ontology/ontology/shapes.ttl"       # Update with actual path
 
 # ontology_file = "ontology.ttl"  # File is in the same directory
 # shapes_file = "shapes.ttl"      # File is in the same directory
