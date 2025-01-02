@@ -1,0 +1,426 @@
+# Section 1: Namespaces and Imports
+@prefix fght: <https://purl.org/5g-hybrid-threats#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+# Import the shapes file
+fght:ontology owl:imports <fght_shapes.ttl> .
+
+# Custom Annotation Properties
+fght:alignedWithStandard a owl:AnnotationProperty ;
+    rdfs:label "Aligned With Standard" ;
+    rdfs:comment "Indicates the alignment of a class or property with a specific standard, such as STIX 2.1." .
+
+fght:alignedWithENISA a owl:AnnotationProperty ;
+    rdfs:label "Aligned With ENISA" ;
+    rdfs:comment "Indicates the alignment of a class or property with ENISA's 5G guidelines or taxonomies." .
+
+fght:alignedWithMITRE a owl:AnnotationProperty ;
+    rdfs:label "Aligned With MITRE" ;
+    rdfs:comment "Indicates the alignment of a class or property with the MITRE ATT&CK framework or related initiatives." .
+
+# Section 2: Root Level Concepts
+fght:ThreatConcept a owl:Class ;
+    rdfs:label "ThreatConcept" ;
+    rdfs:comment "Root class representing hybrid threats in 5G infrastructure, aligned with STIX (ThreatConcept) and ENISA taxonomies (Threat)" ;
+    fght:alignedWithStandard "STIX 2.1" ;
+    fght:alignedWithENISA "ENISA Threat Taxonomy ver Dec 2020" ;
+    fght:externalReference <https://www.enisa.europa.eu/publications/enisa-threat-landscape-report-for-5g-networks> . 
+
+fght:Campaign a owl:Class ;
+    rdfs:label "Campaign" ;
+    rdfs:comment "A coordinated set of activities, undertaken by threat actors employing a set of Tactics, Techniques, and Procedures (TTPs), to achieve specific objectives, such as data exfiltration, espionage, or disruption of critical systems." ;
+    fght:alignedWithStandard "STIX 2.1" ;
+    fght:alignedWithMITRE "MITRE ATT&CK Matrix for Enterprise" ;
+    fght:exampleUsage "The SolarWinds Campaign by APT29 employed multiple TTPs to infiltrate supply chain systems and exfiltrate sensitive data." ;
+    rdfs:subClassOf fght:NefariousActivity .  # Explicitly add this line to connect Campaign to Activity
+        [
+            a owl:Restriction ;
+            owl:onProperty fght:targets ;
+            owl:someValuesFrom fght:Target
+        ] .
+
+fght:OperationGhost a fght:Campaign ;
+    rdfs:label "OperationGhost" ;
+    rdfs:comment "Coordinated espionage efforts targeting governmental and private entities." ;
+    fght:targets [
+        a fght:Vulnerability, 
+        fght:OrganizationalTarget, 
+        fght:SystemTarget, 
+        fght:NetworkTarget
+    ] .
+
+fght:Target a owl:Class ;
+    rdfs:label "Target" ;
+    rdfs:comment "Entities or assets that can be targeted by threats, aligned with STIX Identity and Infrastructure concepts" ;
+    fght:alignedWithStandard "STIX 2.1" .
+
+# Section 3: Main Branches under ThreatConcept
+
+# NefariousActivity Branch
+fght:NefariousActivity a owl:Class ;
+    rdfs:subClassOf fght:ThreatConcept ;
+    rdfs:label "NefariousActivity" ;
+    rdfs:comment "Nefarious activity/abuse of assets, as categorized in ENISA 5G Taxonomy" ;
+    fght:alignedWithENISA "ENISA 5G Taxonomy" .
+
+fght:NetworkManipulation a owl:Class ;
+    rdfs:subClassOf fght:NefariousActivity ;
+    rdfs:label "NetworkManipulation" ;
+    rdfs:comment "Manipulation of network configuration/data forging, as categorized in ENISA 5G Taxonomy" ;
+    fght:alignedWithENISA "ENISA 5G Taxonomy" .
+
+fght:DenialOfService a owl:Class ;
+    rdfs:subClassOf fght:NefariousActivity ;
+    rdfs:label "DenialOfService" ;
+    rdfs:comment "Denial of service attacks targeting infrastructure" ;
+    fght:alignedWithENISA "ENISA 5G Taxonomy" .
+
+fght:DistributedDenialOfService a owl:Class ;
+    rdfs:subClassOf fght:DenialOfService ;
+    rdfs:label "DistributedDenialOfService" ;
+    rdfs:comment "Distributed denial of service (DDoS)" ;
+    fght:alignedWithENISA "ENISA 5G Taxonomy" .
+
+fght:MaliciousCodeOrSoftware a owl:Class ;
+    rdfs:subClassOf fght:NefariousActivity ;
+    rdfs:label "MaliciousCodeOrSoftware" ;
+    rdfs:comment "Category for software-based threats" ;
+    fght:alignedWithENISA "ENISA 5G Taxonomy" .
+
+fght:Malware a owl:Class ;
+    rdfs:subClassOf fght:MaliciousCodeOrSoftware ;
+    rdfs:label "Malware" ;
+    rdfs:comment "Malicious software targeting infrastructure components" ;
+    fght:alignedWithENISA "ENISA 5G Taxonomy" ;
+    fght:alignedWithStandard "STIX 2.1" .
+
+fght:Ransomware a owl:Class ;
+    rdfs:subClassOf fght:MaliciousCodeOrSoftware ;
+    rdfs:label "Ransomware" ;
+    rdfs:comment "Malicious software that encrypts data and demands ransom for its release" ;
+    fght:alignedWithENISA "ENISA 5G Taxonomy" .
+
+# ThreatActor Branch
+fght:ThreatActor a owl:Class ;
+    rdfs:subClassOf fght:ThreatConcept ;
+    rdfs:label "ThreatActor" ;
+    rdfs:comment "Individuals, groups, or organizations that are responsible for cybersecurity threats and incidents" ;
+    fght:alignedWithStandard "STIX 2.1" .
+
+fght:StateActor a owl:Class ;
+    rdfs:subClassOf fght:ThreatActor ;
+    rdfs:label "StateActor" ;
+    rdfs:comment "Threat actors sponsored by or affiliated with nation states" .
+
+fght:NonStateActor a owl:Class ;
+    rdfs:subClassOf fght:ThreatActor ;
+    rdfs:label "NonStateActor" ;
+    rdfs:comment "Independent threat actors not affiliated with nation states" .
+
+fght:AdvancedPersistentThreat a owl:Class ;
+    rdfs:subClassOf fght:StateActor ;
+    rdfs:label "AdvancedPersistentThreat" ;
+    rdfs:comment "Sophisticated threat actors conducting targeted long-term campaigns" .
+
+fght:APT29_Instance a fght:APT29 ;
+    rdfs:label "APT29 Instance" ;
+    fght:attributedTo fght:SolarWinds_Attack_TEST ;
+    fght:targets fght:SolarWindsOrionVulnerability ;
+    rdfs:comment "A specific instance of the APT29 threat actor." .
+
+fght:APT29 a fght:AdvancedPersistentThreat ;
+    rdfs:label "APT29 AdvancedPersistentThreat" ;
+    fght:attributedTo fght:COVID19_Vaccine_Research ;
+    fght:targets fght:SolarWindsOrionVulnerability ;
+    rdfs:comment "A specific instance of the APT29 threat actor." .
+
+fght:APT29 a owl:Class ;
+    rdfs:subClassOf fght:AdvancedPersistentThreat ;
+    rdfs:label "APT29" ;
+    rdfs:comment "A Russian-linked threat actor associated with cyber espionage activities. Also known as Cozy Bear or The Dukes, affiliated with Russian intelligence (SVR)" .
+
+fght:APT29Activity a owl:Class ;
+    rdfs:subClassOf fght:APT29 ;
+    rdfs:label "APT29Activity" ;
+    rdfs:comment "2016 U.S. presidential election interference, 2020 targeting COVID-19 vaccine research and SolarWinds supply chain attack" .
+
+
+# AttackPattern Branch
+fght:AttackPattern a owl:Class ;
+    rdfs:subClassOf fght:ThreatConcept ;
+    rdfs:label "AttackPattern" ;
+    rdfs:comment "Types of tactics, techniques, and procedures used in attacks, aligned with STIX AttackPattern" ;
+    fght:alignedWithStandard "STIX 2.1" .
+
+fght:InitialAccess a owl:Class ;
+    rdfs:subClassOf fght:NetworkManipulation ;
+    rdfs:label "InitialAccess" ;
+    rdfs:comment "Techniques used to gain initial access to a network" .
+
+fght:5GInitialAccess a owl:Class ;
+    rdfs:subClassOf fght:InitialAccess ;
+    rdfs:label "5GInitialAccess" ;
+    rdfs:comment "Initial access techniques specifically targeting 5G infrastructure components" .
+
+fght:RanAccessCompromise a owl:Class ;
+    rdfs:subClassOf fght:5GInitialAccess ;
+    rdfs:label "RANAccessCompromise" ;
+    rdfs:comment "Compromising 5G Radio Access Network components for initial entry" .
+
+fght:5GSliceAccess a owl:Class ;
+    rdfs:subClassOf fght:5GInitialAccess ;
+    rdfs:label "5GSliceAccess" ;
+    rdfs:comment "Exploiting network slicing vulnerabilities for unauthorized access" .
+
+# Section 4: Target Subclasses
+fght:DNC a owl:Class ;
+    rdfs:subClassOf fght:Target ;
+    rdfs:label "Vulnerability" ;
+    rdfs:comment "Weaknesses in systems, networks, or organizations that can be exploited by threats, aligned with STIX concepts" ;
+    fght:alignedWithStandard "STIX 2.1" .
+
+fght:NetworkTarget a owl:Class ;
+    rdfs:subClassOf fght:Target ;
+    rdfs:label "NetworkTarget" ;
+    rdfs:comment "Network infrastructure targets including 5G components" .
+
+fght:SystemTarget a owl:Class ;
+    rdfs:subClassOf fght:Target ;
+    rdfs:label "SystemTarget" ;
+    rdfs:comment "System-level targets including software and hardware components" .
+
+fght:OrganizationalTarget a owl:Class ;
+    rdfs:subClassOf fght:Target ;
+    rdfs:label "OrganizationalTarget" ;
+    rdfs:comment "Organizational entities that can be targeted" .
+
+# Section 5: Properties
+fght:location a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+fght:year a owl:DatatypeProperty ;
+    rdfs:range xsd:gYear .
+
+fght:APTName a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+fght:MalwareName a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+fght:objective a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+fght:techniquesUsed a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+fght:impact a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+fght:targets a owl:ObjectProperty ;
+    rdfs:domain fght:ThreatConcept ;
+    rdfs:range fght:Target ;
+    rdfs:comment "Associates a ThreatConcept with the entities or assets it targets." .
+
+fght:attributedTo a owl:ObjectProperty ;
+    rdfs:label "attributed to" ;
+    rdfs:comment "Both STIX and MITRE address attribution by relating Campaigns to Threat Actors based on observed activities and techniques." ;
+    rdfs:domain fght:Campaign ;
+    rdfs:range fght:ThreatActor .
+
+# Object property definition: A Campaign uses an AttackPattern
+fght:usesAttackPattern a owl:ObjectProperty ;
+    rdfs:label "usesAttackPattern" ;
+    rdfs:domain fght:Campaign ;
+    rdfs:range fght:AttackPattern ;
+    rdfs:comment "Defines which attack patterns are used by a campaign." .
+
+# Object property definition: An AttackPattern is used by a Campaign (inverse)
+fght:usedBy a owl:ObjectProperty ;
+    owl:inverseOf fght:usesAttackPattern ;
+    rdfs:label "usedBy" ;
+    rdfs:domain fght:AttackPattern ;
+    rdfs:range fght:Campaign ;
+    rdfs:comment "Defines which campaigns use an attack pattern." ;
+    rdfs:comment "Campaign uses a AttackPattern, allowing for associations to certain tactics, techniques, and procedures." .
+
+# Object property definition
+fght:usedBy a owl:ObjectProperty ;
+    rdfs:label "usedBy" ;
+    rdfs:domain fght:Malware ;
+    rdfs:range fght:ThreatActor ;
+    rdfs:comment "Defines which threat actor uses the malware." .
+
+fght:uses a owl:ObjectProperty ;
+    owl:inverseOf fght:usedBy ;
+    rdfs:comment "Defines which malware is used by a ThreatActor." .
+
+# # Example instances with hierarchical alignment
+fght:CosmicDuke fght:usedBy fght:APT29 .
+fght:TEARDROP fght:usedBy fght:APT29 .
+fght:EnvyScout fght:usedBy fght:APT29 .
+fght:MiniDuke fght:usedBy fght:APT29 .
+fght:SeaDuke fght:usedBy fght:APT29 .
+fght:WellMess fght:usedBy fght:APT29 .
+
+# Section 6: Instances
+fght:COVID19_Vaccine_Research a fght:ThreatActor ;
+    rdfs:label "COVID-19 Vaccine Research Targeting - 2020" ;
+    fght:APTName "COVID-19 Vaccine Research Attack" ;
+    fght:location "Worldwide" ;
+    fght:targets fght:PharmaceuticalCompanies ;
+    fght:objective "Intellectual Property Theft" ;
+    fght:techniquesUsed "Data Exfiltration" ;
+    fght:attributedTo fght:SolarWinds_Attack_TEST ;
+    fght:year "2020"^^xsd:gYear ;
+    rdfs:comment "Campaign targeting healthcare and pharmaceutical organizations for vaccine research data." .
+
+fght:DNC_2016_Election a fght:APT29Activity;
+    rdfs:label "DNC Cyber Operation - 2016 Election" ;
+    fght:APTName "2016 DNC Election Interference" ;
+    fght:location "Washington, D.C." ;
+    fght:targets fght:DemocraticNationalCommittee ;
+    fght:objective "Election Interference" ;
+    fght:techniquesUsed "Malware Deployment", "Spear Phishing" ; 
+    fght:attributedTo fght:SolarWinds_Attack_TEST ;
+    fght:year "2016"^^xsd:gYear ;
+    rdfs:comment "Cyber operation targeting the DNC and U.S. political organizations during the 2016 U.S. presidential election." .
+
+fght:SolarWinds_Attack a fght:APT29Activity ;
+    rdfs:label "SolarWinds Supply Chain Attack" ;
+    fght:APTName "SolarWinds Attack" ;
+    fght:location "Worldwide" ;
+    fght:targets fght:SolarWindsOrionVulnerability ; 
+    fght:objective "Supply Chain Compromise" ;
+    fght:impact "Global Network Compromise" ;
+    fght:techniquesUsed "Supply Chain Compromise" ;
+    fght:usesAttackPattern fght:SupplyChainAttack ;
+    fght:attributedTo fght:SolarWinds_Attack_TEST ; 
+    fght:year "2020"^^xsd:gYear ;
+    rdfs:comment "Major supply chain attack affecting multiple organizations through compromised software update." .
+
+
+fght:SolarWinds_Attack_TEST a fght:Campaign ;
+    fght:targets fght:SolarWindsOrionVulnerability ;
+    fght:usesAttackPattern fght:SupplyChainAttack ;
+    fght:attributedTo fght:SolarWinds_Attack ;
+    rdfs:label "SolarWinds Supply Chain Attack_TEST" ;
+    rdfs:comment "Major supply chain attack TEST." .
+
+
+fght:SupplyChainAttack a fght:AttackPattern ;
+    rdfs:label "Supply Chain Attack" ;
+    rdfs:comment "An attack pattern exploiting supply chain vulnerabilities." .
+
+fght:WannaCry a fght:Ransomware ;
+    rdfs:label "WannaCry Ransomware" ;
+    fght:MalwareName "WannaCry" ;
+    rdfs:comment "A major ransomware attack that encrypts files and demands ransom payment." .
+
+fght:MiniDuke a fght:Malware ;
+    rdfs:label "MiniDuke Malware" ;
+    fght:MalwareName "MiniDuke" ;
+    rdfs:comment "Malware associated with APT29 operations." .
+
+fght:SeaDuke a fght:Malware ;
+    rdfs:label "SeaDuke Malware" ;
+    fght:MalwareName "SeaDuke" ;
+    rdfs:comment "Advanced malware tool used in APT29 operations." .
+
+fght:CosmicDuke a fght:Malware ;
+    rdfs:label "CosmicDuke" ;
+    rdfs:comment "Malware used by APT29 from 2010 to 2015, associated with espionage activities." ;
+    fght:MalwareName "CosmicDuke" ;
+    fght:source "MITRE ATT&CK" .
+
+fght:TEARDROP a fght:Malware ;
+    rdfs:label "TEARDROP" ;
+    rdfs:comment "A memory-only dropper linked to the SolarWinds Compromise and likely used by APT29 since May 2020." ;
+    fght:MalwareName "TearDrop" ;
+    fght:source "MITRE ATT&CK" .
+
+fght:EnvyScout a fght:Malware ;
+    rdfs:label "EnvyScout" ;
+    rdfs:comment "A dropper malware utilized by APT29 since at least 2021." ;
+    fght:MalwareName "EnvyScout" ;
+    fght:source "MITRE ATT&CK" .
+
+fght:WellMess a fght:Malware ;
+    rdfs:label "WellMess" ;
+    rdfs:comment "Lightweight malware active since 2018, targeting Linux and Windows." ;
+    fght:MalwareName "WellMess" ;
+    fght:source "CISA, NCSC via MITRE ATT&CK" .
+
+
+fght:PharmaceuticalCompanies 
+    a fght:OrganizationalTarget, fght:NetworkTarget, fght:SystemTarget, fght:Vulnerability ;
+    rdfs:label "Pharmaceutical Companies" ;
+    rdfs:comment "Healthcare and pharmaceutical research organizations" ;
+    fght:sensitivity "High" .
+
+fght:DemocraticNationalCommittee 
+    a fght:OrganizationalTarget, fght:NetworkTarget, fght:SystemTarget, fght:Vulnerability ;
+    rdfs:label "Democratic National Committee" ;
+    rdfs:comment "U.S. Democratic Party's governing body" ;
+    fght:sensitivity "High" .
+
+fght:SolarWindsOrionPlatform a fght:Vulnerability, fght:SystemTarget, fght:OrganizationalTarget, fght:NetworkTarget ;
+    rdfs:label "SolarWinds Orion Platform" ;
+    rdfs:comment "Network management and monitoring software platform" ;
+    fght:sensitivity "Critical" .
+
+fght:SolarWindsOrionVulnerability a fght:Vulnerability, fght:OrganizationalTarget, fght:NetworkTarget, fght:SystemTarget ;
+    rdfs:label "SolarWinds Orion Vulnerability" ;
+    rdfs:comment "A critical vulnerability in SolarWinds Orion Platform." .
+
+fght:Vulnerability 
+    a fght:Vulnerability, fght:OrganizationalTarget, fght:NetworkTarget, fght:SystemTarget ;
+    rdfs:label "Vulnerability" ;
+    rdfs:comment "Weaknesses in systems, networks, or organizations, aligned with STIX concepts" ;
+    fght:alignedWithStandard "STIX 2.1" ;
+    fght:sensitivity "High" .
+
+fght:Vulnerability_5GCore 
+    a fght:Vulnerability, fght:OrganizationalTarget, fght:NetworkTarget, fght:SystemTarget ;
+    rdfs:label "5G Core Vulnerability" ;
+    rdfs:comment "A critical vulnerability in the 5G core network infrastructure, potentially exploitable by threat actors." .
+
+fght:SpecificVulnerability 
+    a fght:Vulnerability, fght:OrganizationalTarget, fght:NetworkTarget, fght:SystemTarget ;
+    rdfs:label "Specific Vulnerability" ;
+    rdfs:comment "An individual instance representing a specific vulnerability" ;
+    fght:alignedWithStandard "STIX 2.1" ;
+    fght:sensitivity "High" .
+
+fght:ExampleInitialAccess rdf:type fght:InitialAccess ;
+    rdfs:label "Example Initial Access" ;
+    fght:NefariousActivityName "Example Initial Network Access" ;
+    fght:techniquesUsed "Credential Stuffing" .
+
+fght:InitialAccessExample5G a fght:5GInitialAccess,  fght:NetworkManipulation ;
+    rdfs:label "5G Initial Access Example" ;
+    fght:NefariousActivityName "Exploitation of 5G Network Slicing" ;
+    rdfs:comment "An example instance representing an initial access technique targeting vulnerabilities in 5G network slicing." ;
+    fght:techniquesUsed "Unauthorized Slice Configuration Access" ;
+    fght:objective "Gain initial unauthorized access to the 5G network" ;
+    fght:year "2024"^^xsd:gYear ;
+    fght:impact "Compromise of network slice integrity and availability" .
+
+fght:ExampleNetworkManipulation a fght:NetworkManipulation ;
+    rdfs:label "Example Network Manipulation" ;
+    fght:techniquesUsed "Example Technique" ;
+    fght:NefariousActivityName "Example Activity" .
+
+fght:ExampleDenialOfService a fght:DenialOfService ;
+    rdfs:label "Example DoS Attack" ;
+    fght:techniquesUsed "DDoS" ;
+    fght:NefariousActivityName "Example DoS Activity" .
+
+fght:ExampleDDoS a fght:DistributedDenialOfService, fght:DenialOfService ;
+    rdfs:label "Example DDoS Attack" ;
+    fght:techniquesUsed "Botnet Attack" ;
+    fght:NefariousActivityName "Example Distributed DoS Activity" .
+

@@ -1,0 +1,163 @@
+# Section 1: Namespaces and Imports
+@prefix fght: <https://purl.org/5g-hybrid-threats#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+
+# Section 7: SHACL Shapes
+
+# Direct Threat Shape
+fght:DirectThreatShape a sh:NodeShape ;
+    sh:targetClass fght:NetworkManipulation ;
+    sh:property [ 
+        sh:path fght:NefariousActivityName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Direct threat activity must have a name."
+    ] .
+
+fght:5GInitialAccessShape a sh:NodeShape ;
+    sh:targetClass fght:5GInitialAccess ;
+    sh:property [
+        sh:path fght:NefariousActivityName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "5GInitialAccess activities must have a name."
+    ] ;
+    sh:property [
+        sh:path fght:techniquesUsed ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Techniques used in 5GInitialAccess must be specified."
+    ] .
+
+# Combined Malware Shape
+fght:MalwareShape a sh:NodeShape ;
+    sh:targetClass fght:Malware ;
+    sh:property [
+        sh:path fght:MalwareName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Malware must have a name."
+    ] ;
+    sh:property [
+        sh:path fght:usedBy ;
+        sh:class fght:ThreatActor ;
+        sh:message "Each Malware instance must be used by at least one ThreatActor." ;
+        sh:minCount 1
+    ] .
+
+# Ransomware Shape
+fght:RansomwareShape a sh:NodeShape ;
+    sh:targetClass fght:Ransomware ;
+    sh:property [ 
+        sh:path fght:MalwareName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Ransomware must have a name."
+    ] .
+
+# Shape for APT29 Activity
+fght:APT29ActivityShape a sh:NodeShape ;
+    sh:targetClass fght:APT29Activity ;
+    sh:property [
+        sh:path fght:location ;
+        sh:minCount 1 ;
+        sh:message "Every APT29Activity must have a location."
+    ] ;
+    sh:property [
+        sh:path fght:targets ;
+        sh:minCount 1 ;
+        sh:message "Activity should have at least one target."
+    ] ;
+    sh:property [
+        sh:path fght:techniquesUsed ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Techniques used should be specified."
+    ] ;
+    sh:property [
+        sh:path fght:year ;
+        sh:datatype xsd:gYear ;
+        sh:minCount 1 ;
+        sh:message "Year of activity occurrence should be specified."
+    ] .
+
+# fght:CampaignShape a sh:NodeShape ;
+#     sh:targetClass fght:Campaign ;
+#     sh:property [
+#         sh:path fght:targets ;
+#         sh:class fght:Vulnerability ;
+#         sh:message "A Campaign must target at least one Vulnerability." ;
+#         sh:minCount 1 ;
+#     #    sh:severity sh:Violation
+#     ] .
+    # sh:property [
+    #     sh:path fght:attributedTo ;
+    #     sh:class fght:ThreatActor ;
+    #     sh:message "A Campaign must be attributed to at least one ThreatActor." ;
+    #     sh:minCount 1 ;
+    # #    sh:severity sh:Violation
+    # ] ;
+    # sh:property [
+    #     sh:path fght:usesAttackPattern ;
+    #     sh:class fght:AttackPattern ;
+    #     sh:minCount 1 ; # At least one attack pattern must be used
+    #     sh:message "A Campaign must use at least one AttackPattern." ;
+    # ] .
+
+# SHACL shape for usedBy
+fght:AttackPatternShape a sh:NodeShape ;
+    sh:targetClass fght:AttackPattern ;
+    sh:property [
+        sh:path fght:usedBy ;
+        sh:class fght:Campaign ;
+        sh:minCount 0 ; # An attack pattern may or may not be used by a campaign
+        sh:message "An AttackPattern may be used by a Campaign." ;
+    ] .
+
+fght:ThreatActorShape a sh:NodeShape ;
+    sh:targetClass fght:ThreatActor ;
+    sh:property [
+        sh:path fght:attributedTo ;
+        sh:class fght:Campaign ;
+        sh:message "A ThreatActor should be linked to at least one Campaign." ;
+        sh:minCount 1
+    ] .
+
+fght:TargetShape a sh:NodeShape ;
+    sh:targetClass fght:Target ;
+    sh:or (
+        [ sh:class fght:NetworkTarget ]
+        [ sh:class fght:SystemTarget ]
+        [ sh:class fght:OrganizationalTarget ]
+        [ sh:class fght:Vulnerability ]
+    ) ;
+    sh:message "Each Target must belong to a specific subclass." .
+
+fght:VulnerabilityShape a sh:NodeShape ;
+    sh:targetClass fght:Vulnerability ;  # Targets instances of fght:Vulnerability
+    sh:property [
+        sh:path fght:alignedWithStandard ;
+        sh:datatype xsd:string ;  # Expecting a string value
+    ] ;
+    sh:property [
+        sh:path fght:sensitivity ;
+        sh:datatype xsd:string ;  # Expecting a string value
+    ] .
+
+fght:CampaignShape a sh:NodeShape ;
+    sh:targetClass fght:Campaign ;
+    sh:property [
+      # a sh:PropertyShape ;
+       sh:path fght:targets ;
+       sh:class fght:Vulnerability ;
+       sh:message "A Campaign must target at least one Vulnerability." ;
+       sh:minCount 1 ;
+    #    sh:severity sh:Violation
+    ] .
+
+    
