@@ -86,29 +86,6 @@ fght:APT29ActivityShape a sh:NodeShape ;
         sh:message "Year of activity occurrence should be specified."
     ] .
 
-# fght:CampaignShape a sh:NodeShape ;
-#     sh:targetClass fght:Campaign ;
-#     sh:property [
-#         sh:path fght:targets ;
-#         sh:class fght:Vulnerability ;
-#         sh:message "A Campaign must target at least one Vulnerability." ;
-#         sh:minCount 1 ;
-#     #    sh:severity sh:Violation
-#     ] .
-    # sh:property [
-    #     sh:path fght:attributedTo ;
-    #     sh:class fght:ThreatActor ;
-    #     sh:message "A Campaign must be attributed to at least one ThreatActor." ;
-    #     sh:minCount 1 ;
-    # #    sh:severity sh:Violation
-    # ] ;
-    # sh:property [
-    #     sh:path fght:usesAttackPattern ;
-    #     sh:class fght:AttackPattern ;
-    #     sh:minCount 1 ; # At least one attack pattern must be used
-    #     sh:message "A Campaign must use at least one AttackPattern." ;
-    # ] .
-
 # SHACL shape for usedBy
 fght:AttackPatternShape a sh:NodeShape ;
     sh:targetClass fght:AttackPattern ;
