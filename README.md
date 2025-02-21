@@ -33,7 +33,7 @@ The ontology is in its preliminary stage, featuring:
 
 ## License
 
-The work is released under either the **Creative Commons Zero (CC0)** license to maximize reusability and collaboration; or the MIT license if attribution is a priority.
+The 5G Hybrid Threat Ontology is licensed under CC-BY 4.0. All accompanying scripts and code are licensed under the MIT License.
 
 ## Acknowledgments
 
