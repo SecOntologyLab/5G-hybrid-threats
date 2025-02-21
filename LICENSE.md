@@ -3,12 +3,12 @@
 
 This repository contains two distinct components that are subject to different licensing terms:
 
-1️:**5G Hybrid Threat Ontology (CC-BY 4.0 License)**  
+**5G Hybrid Threat Ontology (CC-BY 4.0 License)**  
    - The ontology dataset (`.ttl`, `.rdf`, and related files) is licensed under **Creative Commons Attribution 4.0 (CC-BY 4.0)**.  
    - This allows reuse, modification, and redistribution **as long as proper attribution is given**.  
    - See details in **Section 1: CC-BY 4.0 License** below.  
 
-2️:**Python Scripts & Code (MIT License)**  
+**Python Scripts & Code (MIT License)**  
    - Any Python scripts and other software code in this repository are licensed under the **MIT License**.  
    - This permits unrestricted use, modification, and distribution **with no warranty**.  
    - See details in **Section 2: MIT License** below.  
