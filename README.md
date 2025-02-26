@@ -29,7 +29,7 @@ Currently, two versions of the ontology are in play: one is in a preliminary sta
 
 ## License
 
-The 5G Hybrid Threat Ontology is licensed under CC-BY 4.0. All accompanying scripts and code are licensed under the MIT License.
+The Preliminary Ontology and the 5G Hybrid Threat Ontology are licensed under CC-BY 4.0. All accompanying scripts and code are licensed under the MIT License.
 
 ## Acknowledgments
 
