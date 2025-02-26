@@ -1,5 +1,5 @@
 # 5G-hybrid-threats
-Repository for the 5G Hybrid Threats Ontology
+Repository for the 5G Hybrid Threats Ontology (Decoding5G) and the PreliminaryOntology
 
 # 5G Hybrid Threats Ontology
 
