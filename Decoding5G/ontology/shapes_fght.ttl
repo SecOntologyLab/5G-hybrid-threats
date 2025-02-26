@@ -86,6 +86,7 @@ fght:APT29ActivityShape a sh:NodeShape ;
         sh:message "Year of activity occurrence should be specified."
     ] .
 
+
 # SHACL shape for usedBy
 fght:AttackPatternShape a sh:NodeShape ;
     sh:targetClass fght:AttackPattern ;
@@ -115,6 +116,15 @@ fght:TargetShape a sh:NodeShape ;
     ) ;
     sh:message "Each Target must belong to a specific subclass." .
 
+fght:CampaignAccountsShape a sh:NodeShape ;
+    sh:targetClass fght:CampaignAccounts ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] .
+
+
 fght:VulnerabilityShape a sh:NodeShape ;
     sh:targetClass fght:Vulnerability ;  # Targets instances of fght:Vulnerability
     sh:property [
@@ -137,4 +147,164 @@ fght:CampaignShape a sh:NodeShape ;
     #    sh:severity sh:Violation
     ] .
 
-    
+# Shape for ElectionInfrastructure
+fght:ElectionInfrastructureShape a sh:NodeShape ;
+    sh:targetClass fght:ElectionInfrastructure ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] .
+
+# Shape for RiskLevel
+fght:RiskLevelShape a sh:NodeShape ;
+    sh:targetClass fght:RiskLevel ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+
+# Shape for 5GAmplificationMechanism
+fght:5GAmplificationMechanismShape a sh:NodeShape ;
+    sh:targetClass fght:5GAmplificationMechanism ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path fght:hasRiskLevel ;
+        sh:class fght:RiskLevel ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+# Combined Shape for Disinformation
+fght:DisinformationShape a sh:NodeShape ;
+    sh:targetClass fght:Disinformation ;
+    sh:property [
+        sh:path fght:propagationChannel ;
+        sh:class fght:NetworkTarget ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path fght:amplificationMethod ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path fght:usesAmplificationMechanism ;
+        sh:class fght:5GAmplificationMechanism ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path fght:hasRiskLevel ;
+        sh:class fght:RiskLevel ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+# Shapes for specific mechanism instances
+fght:NetworkSlicingShape a sh:NodeShape ;
+    sh:targetClass fght:NetworkSlicing ;
+    sh:property [
+        sh:path fght:targetsRegion ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] .
+
+fght:EdgeComputingShape a sh:NodeShape ;
+    sh:targetClass fght:EdgeComputing ;
+    sh:property [
+        sh:path fght:localityFocus ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] .
+
+fght:EnhancedMobileBroadbandShape a sh:NodeShape ;
+    sh:targetClass fght:EnhancedMobileBroadband ;
+    sh:property [
+        sh:path fght:contentType ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] .
+
+fght:UltraReliableLowLatencyShape a sh:NodeShape ;
+    sh:targetClass fght:UltraReliableLowLatency ;
+    sh:property [
+        sh:path fght:adjustmentType ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] .
+#                                                          ***
+#                                                       Jan 21 additions
+
+# Shape for ThreatConcept validation
+fght:ThreatConceptValidationShape
+    a sh:NodeShape ;
+    sh:targetClass fght:ThreatConcept ;
+    sh:property [
+        sh:path fght:hasRiskLikelihood ;
+        sh:class fght:LikelihoodLevel ;
+        sh:maxCount 1 ;  # Functional property constraint
+    ] ;
+    sh:property [
+        sh:path fght:hasRiskSeverity ;
+        sh:class fght:SeverityLevel ;
+        sh:maxCount 1 ;  # Functional property constraint
+    ] .
+
+# Value constraint shapes
+fght:LikelihoodLevelShape
+    a sh:NodeShape ;
+    sh:targetClass fght:LikelihoodLevel ;
+    sh:in ( fght:HighLikelihood fght:MediumLikelihood fght:LowLikelihood ) .
+
+fght:SeverityLevelShape
+    a sh:NodeShape ;
+    sh:targetClass fght:SeverityLevel ;
+    sh:in ( fght:HighSeverity fght:MediumSeverity fght:LowSeverity ) .
+
+# is a Part of construction
+fght:DocumentSectionShape 
+    a sh:NodeShape ;
+    sh:targetClass fght:DocumentSection ;
+    sh:property [
+        sh:path fght:subPartOf ;
+        sh:class fght:DocumentSection ;
+    ] .
+
+# Document and Collection Shapes
+fght:DocumentShape
+    a sh:NodeShape ;
+    sh:targetClass fght:Document ;
+    sh:property [
+        sh:path fght:partOfGroup ;
+        sh:class fght:DocumentCollection ;
+        sh:minCount 1 ;  # Each document must belong to at least one collection
+    ] .
+
+fght:DocumentCollectionShape
+    a sh:NodeShape ;
+    sh:targetClass fght:DocumentCollection ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;  # Each collection must have a label
+    ] .
+
+# Shape to ensure proper partOfGroup relationships
+fght:PartOfGroupShape
+    a sh:NodeShape ;
+    sh:targetClass fght:Document ;
+    sh:property [
+        sh:path fght:partOfGroup ;
+        sh:nodeKind sh:IRI ;  # Must be an IRI, not a literal
+        sh:class fght:DocumentCollection ;
+    ] .
+
+

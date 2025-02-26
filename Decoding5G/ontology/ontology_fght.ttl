@@ -22,26 +22,35 @@ fght:alignedWithMITRE a owl:AnnotationProperty ;
     rdfs:label "Aligned With MITRE" ;
     rdfs:comment "Indicates the alignment of a class or property with the MITRE ATT&CK framework or related initiatives." .
 
+fght:alignedWithNIST a owl:AnnotationProperty ;
+    rdfs:label "Aligned With NIST" ;
+    rdfs:comment "Indicates the alignment of a class or property with NIST'S cocnern for Critical Infrastructure Protection." .
+
 # Section 2: Root Level Concepts
 fght:ThreatConcept a owl:Class ;
     rdfs:label "ThreatConcept" ;
-    rdfs:comment "Root class representing hybrid threats in 5G infrastructure, aligned with STIX (ThreatConcept) and ENISA taxonomies (Threat)" ;
+    rdfs:comment """Root class representing hybrid threats in 5G infrastructure, aligned with STIX (ThreatConcept)
+     and ENISA taxonomies (Threat)""" ;
     fght:alignedWithStandard "STIX 2.1" ;
-    fght:alignedWithENISA "ENISA Threat Taxonomy ver Dec 2020" ;
+    fght:alignedWithENISA "ENISA Threat Taxonomy 2020" ;
     fght:externalReference <https://www.enisa.europa.eu/publications/enisa-threat-landscape-report-for-5g-networks> . 
+
 
 fght:Campaign a owl:Class ;
     rdfs:label "Campaign" ;
-    rdfs:comment "A coordinated set of activities, undertaken by threat actors employing a set of Tactics, Techniques, and Procedures (TTPs), to achieve specific objectives, such as data exfiltration, espionage, or disruption of critical systems." ;
+    rdfs:comment """A coordinated set of activities, undertaken by threat actors employing 
+      a set of Tactics, Techniques, and Procedures (TTPs), to achieve specific objectives,
+      such as data exfiltration, espionage, or disruption of critical systems.""" ;
     fght:alignedWithStandard "STIX 2.1" ;
     fght:alignedWithMITRE "MITRE ATT&CK Matrix for Enterprise" ;
-    fght:exampleUsage "The SolarWinds Campaign by APT29 employed multiple TTPs to infiltrate supply chain systems and exfiltrate sensitive data." ;
-    rdfs:subClassOf fght:NefariousActivity .  # Explicitly add this line to connect Campaign to Activity
-        [
-            a owl:Restriction ;
-            owl:onProperty fght:targets ;
-            owl:someValuesFrom fght:Target
+    fght:exampleUsage """The SolarWinds Campaign by APT29 employed multiple TTPs to
+     infiltrate supply chain systems and exfiltrate sensitive data.""" ;
+    rdfs:subClassOf fght:NefariousActivity,
+        [ a owl:Restriction ;
+          owl:onProperty fght:targets ;
+          owl:someValuesFrom fght:Target
         ] .
+
 
 fght:OperationGhost a fght:Campaign ;
     rdfs:label "OperationGhost" ;
@@ -58,6 +67,84 @@ fght:Target a owl:Class ;
     rdfs:comment "Entities or assets that can be targeted by threats, aligned with STIX Identity and Infrastructure concepts" ;
     fght:alignedWithStandard "STIX 2.1" .
 
+# Election Infrastructure
+fght:ElectionInfrastructure a owl:Class ;
+    rdfs:subClassOf fght:Target ;
+    rdfs:label "ElectionInfrastructure" ;
+    rdfs:comment """Critical election-related systems and infrastructure components, specifically,
+      the Cybersecurity Framework Election Infrastructure Profile""" ;
+    fght:alignedWithNIST "NIST Critical Infrastructure Protection" ;
+    fght:externalReference <https://www.nist.gov/publications/cybersecurity-framework-election-infrastructure-profile> .
+    
+    
+# Define ThreatLevel class and instances 
+fght:ThreatLevel rdf:type owl:Class .
+
+# Define threat level property 
+fght:hasThreatLevel rdf:type owl:ObjectProperty ;
+    rdfs:domain fght:ThreatActor ;
+    rdfs:range fght:ThreatLevel .
+
+# ThreatLevel Instance
+fght:High rdf:type fght:ThreatLevel ;
+    rdfs:label "High Threat Level" .
+
+# Add threat levels for State Actors
+fght:APT41 fght:hasThreatLevel fght:High .
+fght:APT28 fght:hasThreatLevel fght:High .
+fght:APT42 fght:hasThreatLevel fght:High .
+fght:LazarusGroup fght:hasThreatLevel fght:High .
+
+# Risk Level Enumeration
+fght:RiskLevel a owl:Class ;
+    rdfs:label "RiskLevel" ;
+    rdfs:comment "Standardized risk levels for threat assessment" ;
+    fght:alignedWithENISA "ENISA Risk Assessment Methodology" .
+
+# Add risk level property
+fght:hasRiskLevel a owl:ObjectProperty ;
+    rdf:type owl:FunctionalProperty ;
+    rdfs:domain fght:ThreatConcept ;
+    rdfs:range fght:RiskLevel ;
+    rdfs:comment "Associates a threat concept with its assessed risk level" .
+    
+# Risk Level Instances
+fght:HighRisk a fght:RiskLevel ;
+    rdfs:label "High Risk" ;
+    rdfs:comment "Indicates highest level of threat severity and potential impact" .
+
+fght:MediumRisk a fght:RiskLevel ;
+    rdfs:label "Medium Risk" ;
+    rdfs:comment "Indicates moderate level of threat severity and potential impact" .
+
+fght:LowRisk a fght:RiskLevel ;
+    rdfs:label "Low Risk" ;
+    rdfs:comment "Indicates lower level of threat severity and potential impact" .
+
+
+# Need to add these classes
+fght:LikelihoodLevel rdf:type owl:Class .
+fght:SeverityLevel rdf:type owl:Class .
+
+# Need to add their instances (like RiskLevel has)
+fght:HighLikelihood rdf:type fght:LikelihoodLevel .
+fght:MediumLikelihood rdf:type fght:LikelihoodLevel .
+fght:LowLikelihood rdf:type fght:LikelihoodLevel .
+
+fght:HighSeverity rdf:type fght:SeverityLevel .
+fght:MediumSeverity rdf:type fght:SeverityLevel .
+fght:LowSeverity rdf:type fght:SeverityLevel .
+
+# Need to add the new properties
+fght:hasRiskLikelihood rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain fght:ThreatConcept ;
+    rdfs:range fght:LikelihoodLevel .
+
+fght:hasRiskSeverity rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain fght:ThreatConcept ;
+    rdfs:range fght:SeverityLevel .
+
+
 # Section 3: Main Branches under ThreatConcept
 
 # NefariousActivity Branch
@@ -72,6 +159,115 @@ fght:NetworkManipulation a owl:Class ;
     rdfs:label "NetworkManipulation" ;
     rdfs:comment "Manipulation of network configuration/data forging, as categorized in ENISA 5G Taxonomy" ;
     fght:alignedWithENISA "ENISA 5G Taxonomy" .
+
+# 5G Amplification Mechanisms
+fght:5GAmplificationMechanism a owl:Class ;
+    rdfs:subClassOf fght:NetworkManipulation, [
+        rdf:type owl:Restriction ;
+        owl:onProperty fght:usedBy ;
+        owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+        owl:onClass fght:ThreatActor
+    ] ;
+    rdfs:label "5G Amplification Mechanism" ;
+    rdfs:comment "Specific 5G network capabilities that can be exploited to amplify attacks" ;
+    fght:alignedWithENISA "ENISA 5G Threat Landscape" .
+
+# Define properties
+fght:usedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain fght:5GAmplificationMechanism ;
+    rdfs:range fght:ThreatActor .
+
+fght:propagatesAttack rdf:type owl:ObjectProperty ;
+    owl:propertyChainAxiom (
+        fght:usedBy
+        fght:collaboratesWith
+    ) .
+
+
+fght:NetworkSlicing a owl:Class ;
+    rdfs:subClassOf fght:5GAmplificationMechanism ;
+    rdfs:label "Network Slicing" ;
+    rdfs:comment "Exploitation of 5G network slicing for targeted attacks and demographic reach" .
+
+fght:EdgeComputing a owl:Class ;
+    rdfs:subClassOf fght:5GAmplificationMechanism ;
+    rdfs:label "Edge Computing" ;
+    rdfs:comment "Exploitation of 5G edge computing capabilities for localized disinformation campaigns" .
+
+fght:EnhancedMobileBroadband a owl:Class ;
+    rdfs:subClassOf fght:5GAmplificationMechanism ;
+    rdfs:label "Enhanced Mobile Broadband" ;
+    rdfs:comment "Exploitation of enhanced mobile broadband for sophisticated deepfake distribution" .
+
+fght:UltraReliableLowLatency a owl:Class ;
+    rdfs:subClassOf fght:5GAmplificationMechanism ;
+    rdfs:label "Ultra-Reliable Low-Latency Communication" ;
+    rdfs:comment "Exploitation of URLLC capabilities for real-time disinformation adjustment" .
+
+# Add property to link disinformation to amplification mechanisms
+fght:usesAmplificationMechanism a owl:ObjectProperty ;
+    rdfs:domain fght:Disinformation ;
+    rdfs:range fght:5GAmplificationMechanism ;
+    rdfs:comment "Links disinformation attacks to specific 5G amplification mechanisms used" .
+
+# Mutually exclusive types of mechanisms
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( fght:NetworkSlicing fght:EdgeComputing fght:EnhancedMobileBroadband fght:UltraReliableLowLatency )
+] .
+
+
+#  Additions Jan 24
+# 5G Mechanism Usage Examples
+fght:NetworkSlicingAttack rdf:type fght:Disinformation ;
+    fght:usesAmplificationMechanism fght:NetworkSlicing ;
+    fght:amplificationMethod "Network slice manipulation" ;
+    fght:hasRiskLevel fght:HighRisk ;
+    fght:propagationChannel fght:Vulnerability_5GCore ;
+    rdfs:label "Network Slicing Disinformation Attack" ;
+    fght:NefariousActivityName "Network Slice Manipulation Campaign" .
+
+# Link mechanisms to threat actors with required properties
+fght:NetworkSlicing fght:usedBy fght:APT28 ;
+    fght:usedBy fght:APT42 ;
+    fght:hasRiskLevel fght:HighRisk ;
+    fght:MalwareName "SliceExploit" ;
+    fght:NefariousActivityName "Network Slice Manipulation" .
+    
+fght:EdgeComputing fght:usedBy fght:APT42 ;
+    fght:usedBy fght:APT28 ;
+    fght:hasRiskLevel fght:HighRisk ;
+    fght:MalwareName "EdgeExploit" ;
+    fght:NefariousActivityName "Edge Computing Exploitation" .
+
+fght:EnhancedMobileBroadband fght:usedBy fght:APT29 ;
+    fght:usedBy fght:APT41 ;
+    fght:hasRiskLevel fght:HighRisk ;
+    fght:MalwareName "EMBExploit" ;
+    fght:NefariousActivityName "Enhanced Mobile Broadband Exploitation" .
+    
+fght:UltraReliableLowLatency fght:usedBy fght:APT41 ;
+    fght:usedBy fght:APT29 ;
+    fght:hasRiskLevel fght:HighRisk ;
+    fght:MalwareName "URLLCExploit" ;
+    fght:NefariousActivityName "URLLC Manipulation" .
+
+# Attack instances with required properties
+fght:5GDisinfoOperation rdf:type fght:Disinformation ;
+    fght:usesAmplificationMechanism fght:NetworkSlicing, fght:EdgeComputing ;
+    fght:amplificationMethod "Combined slice and edge exploitation" ;
+    fght:hasRiskLevel fght:HighRisk ;
+    fght:propagationChannel fght:Vulnerability_5GCore ;
+    fght:NefariousActivityName "Multi-Vector 5G Campaign" .
+
+fght:5GDDoSOperation rdf:type fght:DistributedDenialOfService ;
+    fght:usesAmplificationMechanism fght:UltraReliableLowLatency ;
+    fght:amplificationMethod "URLLC exploitation" ;
+    fght:hasRiskLevel fght:HighRisk ;
+    fght:propagationChannel fght:Vulnerability_5GCore ;
+    fght:NefariousActivityName "5G-Enhanced DDoS Campaign" .
+
+# end additions segment Jan 24
+
 
 fght:DenialOfService a owl:Class ;
     rdfs:subClassOf fght:NefariousActivity ;
@@ -90,6 +286,24 @@ fght:MaliciousCodeOrSoftware a owl:Class ;
     rdfs:label "MaliciousCodeOrSoftware" ;
     rdfs:comment "Category for software-based threats" ;
     fght:alignedWithENISA "ENISA 5G Taxonomy" .
+
+fght:Disinformation a owl:Class ;
+    rdfs:subClassOf fght:NefariousActivity ;
+    rdfs:label "Disinformation" ;
+    rdfs:comment "Deliberate spread of false or misleading information leveraging 5G network capabilities" ;
+    fght:alignedWithENISA "ENISA 5G Threat Landscape" .
+
+# Properties specific to disinformation
+fght:propagationChannel a owl:ObjectProperty ;
+    rdfs:domain fght:Disinformation ;
+    rdfs:range fght:NetworkTarget ;
+    rdfs:comment "Specifies the 5G network components used to spread disinformation" .
+
+fght:amplificationMethod a owl:DatatypeProperty ;
+    rdfs:domain fght:Disinformation ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Methods used to amplify disinformation using 5G capabilities" .
+
 
 fght:Malware a owl:Class ;
     rdfs:subClassOf fght:MaliciousCodeOrSoftware ;
@@ -121,10 +335,132 @@ fght:NonStateActor a owl:Class ;
     rdfs:label "NonStateActor" ;
     rdfs:comment "Independent threat actors not affiliated with nation states" .
 
+# Add directly after the StateActor and NonStateActor class definitions
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( fght:StateActor fght:NonStateActor )
+] .
+
+
+# Add CyberThreatActor class with union
+fght:CyberThreatActor owl:equivalentClass [
+    owl:unionOf (
+        fght:StateActor
+        [ rdf:type owl:Class ;
+          owl:intersectionOf (
+              fght:NonStateActor
+              [ rdf:type owl:Restriction ;
+                owl:onProperty fght:hasThreatLevel ;
+                owl:hasValue fght:High
+              ]
+          )
+        ]
+    )
+] .
+
+
+
+# Persons who function via Ideological Motivation
+fght:IdeologicallyMotivatedPerson a owl:Class ;
+    rdfs:subClassOf fght:NonStateActor ;
+    rdfs:label "IdeologicallyMotivatedPerson" ;
+    rdfs:comment "Non-state actors motivated by ideological rather than financial goals" ;
+    fght:alignedWithStandard "STIX 2.1" .
+
+fght:ExampleIdeologicalActor rdf:type fght:IdeologicallyMotivatedPerson ;
+    rdfs:label "Example High-Threat Non-State Actor" ;
+    fght:attributedTo fght:APT42_Campaign_2024 ;
+    fght:targets fght:Vulnerability ;
+    fght:hasThreatLevel fght:High .
+
+
 fght:AdvancedPersistentThreat a owl:Class ;
     rdfs:subClassOf fght:StateActor ;
     rdfs:label "AdvancedPersistentThreat" ;
     rdfs:comment "Sophisticated threat actors conducting targeted long-term campaigns" .
+
+
+#    APT28 collaboration with the Lazarus Group
+
+# APT28 Definition
+fght:APT28 rdf:type owl:Class ;
+    rdfs:subClassOf fght:AdvancedPersistentThreat ;
+    fght:targets fght:Vulnerability ;
+    rdfs:comment "A threat group attributed to Russia's General Staff Main Intelligence Directorate (GRU) 85th Main Special Service Center (GTsSS) military unit 26165. Also known as Fancy Bear." ;
+    fght:attributedTo fght:SonyPicturesHack2014 ;       # Assign Risk Levels to Threat Actors
+    rdfs:label "APT28" ;
+    fght:hasRiskLevel fght:HighRisk ;
+    fght:hasRiskLikelihood fght:HighLikelihood ;
+    fght:hasRiskSeverity fght:HighSeverity ;
+    fght:partOfGroup fght:RussianAPTs ;
+    fght:collaboratesWith fght:APT42 .
+
+
+# Lazarus Group Definition
+fght:LazarusGroup rdf:type owl:Class ;
+    rdfs:subClassOf fght:StateActor ;
+    fght:targets fght:Vulnerability ;
+    rdfs:comment "North Korean state-sponsored threat actor group active since 2010, also known as Zinc and Hidden Cobra, known for sophisticated attacks including WannaCry ransomware." ;
+    fght:attributedTo fght:SonyPicturesHack2014 ;
+    rdfs:label "Lazarus Group" ;
+    fght:hasRiskLevel fght:HighRisk ;
+    fght:hasRiskLikelihood fght:HighLikelihood .
+
+#  The Russians and Chinese
+
+# Add cardinality constraint
+fght:ThreatActorGroup rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty fght:hasMember ;
+    owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+    owl:onClass fght:ThreatActor
+] .
+
+# Add hasMember property
+fght:hasMember rdf:type owl:ObjectProperty ;
+    rdfs:domain fght:ThreatActorGroup ;
+    rdfs:range fght:ThreatActor ;
+    rdfs:comment "Links a threat group to its member actors" .
+
+fght:RussianAPTs rdf:type fght:ThreatActorGroup ;
+    rdfs:label "Russian State-Sponsored APT Groups" ;
+    rdfs:comment "Collection of APT groups attributed to Russian intelligence services" .
+
+fght:ChineseAPTs rdf:type fght:ThreatActorGroup ;
+    rdfs:label "Chinese State-Sponsored APT Groups" ;
+    rdfs:comment "Collection of APT groups attributed to Chinese intelligence services" .
+
+# Link Lazarus to existing WannaCry
+fght:WannaCry rdf:type fght:Malware ;    # Add the type declaration
+    rdfs:comment "A major ransomware attack in 2017 by Lazarus Group that infected over 300,000 devices globally." ;
+    fght:attributedTo fght:LazarusGroup ;
+    fght:year "2017"^^xsd:gYear ;
+    fght:impactScope "300000 devices" ;
+    fght:usedBy fght:LazarusGroup .
+
+# Properties for Collaboration Chain
+fght:hasParticipant rdf:type owl:ObjectProperty ;
+    rdfs:domain fght:Campaign ;
+    rdfs:range fght:ThreatActor ;
+    rdfs:comment "Links a campaign to its participating threat actors" .
+
+# Property Chain for Collaboration
+fght:collaboratesWith owl:propertyChainAxiom (
+    owl:inverseOf fght:hasParticipant
+    fght:hasParticipant
+) .
+
+# Sony Campaign Instance
+fght:SonyPicturesHack2014 rdf:type fght:Campaign ;
+    fght:targets fght:Vulnerability ; # Link campaigns to vulnerabilities - Jan 21 addition
+    rdfs:label "Sony Pictures Hack 2014" ;
+    rdfs:comment "Joint cyber operation involving data theft and leaks from Sony Pictures" ;
+    fght:year "2014"^^xsd:gYear ;
+    fght:hasParticipant fght:LazarusGroup, fght:APT28 ;
+    fght:attributedTo fght:SolarWinds_Attack ;
+    fght:source "CrowdStrike" .
+
+
+#     APT29 and APT29Activity
 
 fght:APT29_Instance a fght:APT29 ;
     rdfs:label "APT29 Instance" ;
@@ -136,8 +472,34 @@ fght:APT29 a fght:AdvancedPersistentThreat ;
     rdfs:label "APT29 AdvancedPersistentThreat" ;
     fght:attributedTo fght:COVID19_Vaccine_Research ;
     fght:targets fght:SolarWindsOrionVulnerability ;
-    rdfs:comment "A specific instance of the APT29 threat actor." .
+    rdfs:comment "A specific instance of the APT29 threat actor." ;
+    fght:partOfGroup fght:RussianAPTs .
 
+# Added January 22 to test chain property
+
+# Add group classes
+fght:ThreatActorGroup rdf:type owl:Class ;
+    rdfs:label "Threat Actor Group" ;
+    rdfs:comment "A collection of related threat actors" .
+
+fght:RussianAPTs rdf:type fght:ThreatActorGroup ;
+    rdfs:label "Russian APT Groups" .
+
+# Properties
+fght:partOfGroup rdf:type owl:ObjectProperty ;
+    rdfs:domain fght:ThreatActor ;
+    rdfs:range fght:ThreatActorGroup .
+
+fght:hasCollaboration rdf:type owl:ObjectProperty ;
+    rdfs:domain fght:ThreatActorGroup ;
+    rdfs:range fght:ThreatActorGroup .
+
+fght:collaboratesWith owl:propertyChainAxiom (
+    fght:partOfGroup
+    fght:hasCollaboration
+) .
+
+# 
 fght:APT29 a owl:Class ;
     rdfs:subClassOf fght:AdvancedPersistentThreat ;
     rdfs:label "APT29" ;
@@ -148,6 +510,29 @@ fght:APT29Activity a owl:Class ;
     rdfs:label "APT29Activity" ;
     rdfs:comment "2016 U.S. presidential election interference, 2020 targeting COVID-19 vaccine research and SolarWinds supply chain attack" .
 
+# Add APT42 as a specific APT class
+fght:APT42 a owl:Class ;
+    rdfs:subClassOf fght:AdvancedPersistentThreat ;
+    rdfs:label "APT42" ;
+    rdfs:comment "Iranian threat actor group associated with Iran's Revolutionary Guard Corps" ;
+    fght:alignedWithStandard "STIX 2.1" .
+
+# Add instance for the 2024 campaign targeting
+fght:APT42_Campaign_2024 a fght:Campaign ;
+    rdfs:label "APT42 2024 Election Campaign" ;
+    fght:targets fght:USPresidentialCampaignVulnerability ;
+    fght:attributedTo fght:APT42 ;
+    fght:objective "Campaign Account Compromise" ;
+    fght:year "2024"^^xsd:gYear .
+
+fght:APT41_Campaign rdf:type fght:Campaign ;
+    rdfs:label "APT41 Supply Chain Campaign" ;
+    rdfs:comment "Cyber espionage campaign targeting supply chains globally" ;
+    fght:year "2024"^^xsd:gYear ;
+    fght:source "MITRE ATT&CK" ;
+    fght:targets fght:Vulnerability ;
+    fght:attributedTo fght:SolarWinds_Attack .  # Link to existing campaign like APT42
+
 
 # AttackPattern Branch
 fght:AttackPattern a owl:Class ;
@@ -155,6 +540,20 @@ fght:AttackPattern a owl:Class ;
     rdfs:label "AttackPattern" ;
     rdfs:comment "Types of tactics, techniques, and procedures used in attacks, aligned with STIX AttackPattern" ;
     fght:alignedWithStandard "STIX 2.1" .
+
+# Targeted Violence
+fght:TargetedViolence a owl:Class ;
+    rdfs:subClassOf fght:AttackPattern ;
+    rdfs:label "TargetedViolence" ;
+    rdfs:comment "Attacks specifically targeting individuals or organizations with intent to cause harm" .
+
+# Add Account Compromise as an attack pattern
+fght:AccountCompromise a owl:Class ;
+    rdfs:subClassOf fght:AttackPattern ;
+    rdfs:label "Account Compromise" ;
+    rdfs:comment "Techniques used to gain unauthorized access to digital accounts" ;
+    fght:alignedWithStandard "STIX 2.1" .
+
 
 fght:InitialAccess a owl:Class ;
     rdfs:subClassOf fght:NetworkManipulation ;
@@ -267,6 +666,31 @@ fght:SeaDuke fght:usedBy fght:APT29 .
 fght:WellMess fght:usedBy fght:APT29 .
 
 # Section 6: Instances
+
+# Add new APT42-related instances here
+
+fght:USPresidentialCampaignVulnerability a fght:Vulnerability, fght:OrganizationalTarget, fght:NetworkTarget, fght:SystemTarget ;
+    rdfs:label "US Presidential Campaign Account Vulnerabilities" ;
+    rdfs:comment "Vulnerabilities in digital accounts associated with US presidential campaigns" .
+
+
+fght:APT41 rdf:type owl:Class ;
+    rdfs:subClassOf fght:StateActor ;
+    rdfs:label "APT41" ;
+    rdfs:comment "Chinese state-sponsored espionage group also known as BARIUM, WINNTI" ;
+    fght:partOfGroup fght:ChineseAPTs ;
+    fght:targets fght:Vulnerability ;
+    fght:attributedTo fght:APT41_Campaign .  # Add this relationship
+
+  
+fght:APT42 a fght:AdvancedPersistentThreat ;
+    rdfs:label "APT42" ;
+    rdfs:comment "Iranian threat actor group associated with Iran's Revolutionary Guard Corps" ;
+    fght:attributedTo fght:APT42_Campaign_2024 ;
+    fght:targets fght:USPresidentialCampaignVulnerability ;
+    # Add APT41 to Chinese group
+    fght:partOfGroup fght:ChineseAPTs .
+
 fght:COVID19_Vaccine_Research a fght:ThreatActor ;
     rdfs:label "COVID-19 Vaccine Research Targeting - 2020" ;
     fght:APTName "COVID-19 Vaccine Research Attack" ;
@@ -319,7 +743,51 @@ fght:WannaCry a fght:Ransomware ;
     rdfs:label "WannaCry Ransomware" ;
     fght:MalwareName "WannaCry" ;
     rdfs:comment "A major ransomware attack that encrypts files and demands ransom payment." .
+    fght:WannaCry fght:targets fght:Vulnerability . # Jan 21 addition re collaborations insert
 
+
+# APT28 related MALWARE and TOOLS
+
+# Proprietary Tools
+fght:XAgent rdf:type fght:Malware ;
+    rdfs:label "XAgent Malware" ;
+    fght:MalwareName "XAgent" ;
+    rdfs:comment "Primary implant developed by APT28. Advanced malware used for persistent access and data theft." ;
+    fght:usedBy fght:APT28 .
+
+fght:XTunnel rdf:type fght:Malware ;
+    rdfs:label "X-Tunnel Malware" ;
+    fght:MalwareName "X-Tunnel" ;
+    rdfs:comment "Data exfiltration tool used by APT28 for encrypted tunneling." ;
+    fght:usedBy fght:APT28 .
+
+fght:Bookcode rdf:type fght:Malware ;
+    rdfs:label "Bookcode Malware" ;
+    fght:MalwareName "Bookcode" ;
+    rdfs:comment "Sophisticated malware used by Lazarus Group in supply-chain attacks." ;
+    fght:usedBy fght:LazarusGroup .
+
+fght:wAgent rdf:type fght:Malware ;
+    rdfs:label "wAgent Malware" ;
+    fght:MalwareName "wAgent" ;
+    rdfs:comment "Fileless malware used by Lazarus Group to fetch additional malicious payloads." ;
+    fght:usedBy fght:LazarusGroup .
+
+# Shared Tools
+fght:Mimikatz rdf:type fght:Malware ;
+    rdfs:label "Mimikatz Malware" ;
+    fght:MalwareName "Mimikatz" ;
+    rdfs:comment "Publicly available credential harvesting tool used by multiple threat actors." ;
+    fght:usedBy fght:APT28, fght:LazarusGroup .
+
+fght:TorBrowser rdf:type fght:Malware ;
+    rdfs:label "Tor Browser Malware" ;
+    fght:MalwareName "Tor Browser" ;
+    rdfs:comment "Used for anonymous communication and command & control." ;
+    fght:usedBy fght:APT28, fght:LazarusGroup .
+
+
+# APT29 related MALWARE
 fght:MiniDuke a fght:Malware ;
     rdfs:label "MiniDuke Malware" ;
     fght:MalwareName "MiniDuke" ;
@@ -354,6 +822,48 @@ fght:WellMess a fght:Malware ;
     fght:MalwareName "WellMess" ;
     fght:source "CISA, NCSC via MITRE ATT&CK" .
 
+#  Additions Jan 24
+# Risk levels and activity names for all malware
+fght:XTunnel fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "Data Exfiltration Activity" .
+
+fght:MiniDuke fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "APT29 Espionage Operation" .
+
+fght:SeaDuke fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "Advanced Malware Operation" .
+
+fght:EnvyScout fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "Dropper Malware Activity" .
+
+fght:XAgent fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "APT28 Primary Operation" .
+
+fght:Bookcode fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "Supply Chain Attack" .
+
+fght:wAgent fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "Fileless Malware Operation" .
+
+fght:WellMess fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "Remote Access Operation" .
+
+fght:TorBrowser fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "Anonymous Communication Activity" .
+
+fght:CosmicDuke fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "APT29 Espionage Campaign" .
+
+fght:Mimikatz fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "Credential Harvesting Operation" .
+
+fght:WannaCry fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "Ransomware Campaign" .
+
+fght:TEARDROP fght:hasRiskLevel fght:HighRisk ;
+   fght:NefariousActivityName "Memory-Only Dropper Operation" .
+
+#  end of additions Jan 24
 
 fght:PharmaceuticalCompanies 
     a fght:OrganizationalTarget, fght:NetworkTarget, fght:SystemTarget, fght:Vulnerability ;
@@ -424,3 +934,65 @@ fght:ExampleDDoS a fght:DistributedDenialOfService, fght:DenialOfService ;
     fght:techniquesUsed "Botnet Attack" ;
     fght:NefariousActivityName "Example Distributed DoS Activity" .
 
+#                                                                     ***
+#                                                            DL expressivity additions - January 21
+
+# Document Section Class
+fght:DocumentSection rdf:type owl:Class ;
+    rdfs:comment "Represents a section or part of a document" .
+
+# SubPartOf Property
+fght:subPartOf rdf:type owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain fght:DocumentSection ;
+    rdfs:range fght:DocumentSection ;
+    rdfs:comment "Indicates that one document section is part of another section" .
+
+# Specific Sections
+fght:VulnerabilityGroupsCoreNetwork rdf:type fght:DocumentSection ;
+    rdfs:label "VULNERABILITY GROUPS FOR CORE NETWORK" .
+
+fght:Section4_5GVulnerabilities rdf:type fght:DocumentSection ;
+    rdfs:label "Section 4. 5G VULNERABILITIES" .
+
+fght:AnnexC_DetailedVulnerabilities rdf:type fght:DocumentSection ;
+    rdfs:label "C ANNEX: DETAILED VULNERABILITIES IN THE CORE NETWORK" .
+
+# Relationships
+fght:VulnerabilityGroupsCoreNetwork fght:subPartOf fght:Section4_5GVulnerabilities .
+fght:Section4_5GVulnerabilities fght:subPartOf fght:AnnexC_DetailedVulnerabilities .
+
+
+# Document and Collection Classes
+fght:Document rdf:type owl:Class ;
+    rdfs:comment "Represents a document like an ENISA report" .
+
+fght:DocumentCollection rdf:type owl:Class ;
+
+    rdfs:comment "Represents a collection of related documents" .
+
+# PartOfGroup Property
+fght:partOfGroup rdf:type owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:range fght:DocumentCollection ;
+    rdfs:comment "Indicates membership in document collections/series" .
+
+# Example Instances
+fght:ENISA_ETL_2020 rdf:type fght:Document ;
+    rdfs:label "ENISA Threat Landscape December 2020" ;
+    fght:attributedTo fght:SolarWinds_Attack ;  # Indicates a flaw in the SHACL validation procedure 
+    owl:sameAs <https://www.enisa.europa.eu/publications/enisa-threat-landscape-report-for-5g-networks> ;
+    fght:targets fght:Vulnerability . # Indicates a flaw in the SHACL validation procedure 
+
+
+fght:ENISA_ETL_Series rdf:type fght:DocumentCollection ;
+    rdfs:label "ENISA Threat Landscape Report Series" ;
+    fght:attributedTo fght:SolarWinds_Attack ; # Indicates a flaw in the SHACL validation procedure 
+    fght:targets fght:SolarWindsOrionVulnerability . # Indicates a flaw in the SHACL validation procedure 
+
+
+
+fght:ENISA_Publications rdf:type fght:DocumentCollection ;
+    rdfs:label "All ENISA Publications" .
+
+# Relationships
+fght:ENISA_ETL_2020 fght:partOfGroup fght:ENISA_ETL_Series .
+fght:ENISA_ETL_Series fght:partOfGroup fght:ENISA_Publications .
