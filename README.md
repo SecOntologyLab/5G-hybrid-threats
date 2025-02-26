@@ -15,15 +15,12 @@ The primary objectives of this project are:
 ## Current Status
 
 Currently, two versions of the ontology are in play: one is in a preliminary stage, the second, the 5G Hybrid Threats Ontology, is significantly more advanced.
-- Key concepts and relationships specific to hybrid threats in 5G infrastructure.
-- Initial validation using **SHACL** and reasoning tools such as **Protégé**.
-- Future plans to integrate concepts from standard KOS (e.g., STIX) and add case studies.
 
 ## Repository Contents
 
-- `ontology.ttl`: The primary ontology file in **TURTLE** format.
-- Example queries and data for testing and validation (coming soon).
-- Documentation and methodology describing the development process.
+- The primary ontology files are in **TURTLE** representation.
+- Example queries and data for testing and validation are available. 
+- Documentation describes various procedures and testing vehicles of the development process.
 
 ## Next Steps
 
