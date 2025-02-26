@@ -24,9 +24,8 @@ Currently, two versions of the ontology are in play: one is in a preliminary sta
 
 ## Next Steps
 
-1. Align the ontology with standard cybersecurity vocabularies (e.g., STIX, ENISA Taxonomies).
-2. Expand the ontology to include additional 5G-specific assets and threats.
-3. Publish updates and invite contributions from the research community.
+1. Expand the ontology to include additional 5G-specific assets and threats.
+2. Publish updates and invite contributions from the research community.
 
 ## License
 
