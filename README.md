@@ -14,7 +14,7 @@ The primary objectives of this project are:
 
 ## Current Status
 
-The ontology is in its preliminary stage, featuring:
+Currently, two versions of the ontology are in play: one is in a preliminary stage, the second, the 5G Hybrid Threats Ontology, is significantly more advanced.
 - Key concepts and relationships specific to hybrid threats in 5G infrastructure.
 - Initial validation using **SHACL** and reasoning tools such as **Protégé**.
 - Future plans to integrate concepts from standard KOS (e.g., STIX) and add case studies.
