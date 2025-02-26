@@ -14,7 +14,7 @@ The primary objectives of this project are:
 
 ## Current Status
 
-Currently, two versions of the ontology are in play: one is in a preliminary stage, the second, the 5G Hybrid Threats Ontology, is significantly more advanced.
+Currently, two versions of the ontology are in play: one is in a preliminary stage, the second, the 5G Hybrid Threats Ontology, is significantly more advanced and its developement from the ground up is revealed in Paskauskas RA. Decoding 5G security: toward a hybrid threat ontology [version 1; peer review: 1 approved with reservations, 1 not approved]. Open Res Europe 2024, 4:34 (https://doi.org/10.12688/openreseurope.16916.1).
 
 ## Repository Contents
 
