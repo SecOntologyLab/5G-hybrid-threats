@@ -15,7 +15,7 @@ The primary objectives of this project are:
 ## Current Status
 
 Currently, two versions of the ontology are in play: 
-1) The first is in a preliminary stage, 'A preliminary ontology for 5G network security: hybrid threats, risk reduction, compliance', submitted to 2025 IEEE International Conference on Cyber Security and Resilience, forthcoming in conference proceedings, https://www.ieee-csr.org/
+1) The first is in a preliminary stage, 'A preliminary ontology for 5G network resilience: hybrid threats, risk reduction, compliance', submitted to 2025 IEEE International Conference on Cyber Security and Resilience, forthcoming in conference proceedings, https://www.ieee-csr.org/
 2) The second, the 5G Hybrid Threats Ontology, is significantly more advanced, and its development from the ground up is revealed in Paskauskas RA. 'Decoding 5G security: toward a hybrid threat ontology' [version 2]. Open Res Europe 2024, 4:34 (https://doi.org/10.12688/openreseurope.16916.1).
 
 ## Repository Contents
